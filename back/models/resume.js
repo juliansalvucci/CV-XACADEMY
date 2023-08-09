@@ -14,7 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Resume.hasMany(models.Experience, {
         foreignKey: 'resumeId'
-      })
+      });
+      Resume.hasMany(models.Project, {
+        foreignKey: 'resumeId'
+      });
+      Resume.hasMany(models.Skill, {
+        foreignKey: 'resumeId'
+      });
+      Resume.hasMany(models.Education, {
+        foreignKey: 'resumeId'
+      });
     }
   }
   Resume.init({
