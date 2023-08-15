@@ -9,4 +9,4 @@ import { AppLayoutComponent } from './app.layout.component';
   declarations: [AppLayoutComponent],
   imports: [BrowserModule, BrowserAnimationsModule, RouterModule],
 })
-export class LayoutModule {}
+export class AppLayoutModule {}
