@@ -5,7 +5,8 @@
 
 .layout-sidebar {
   min-height: 100vh;
-  min-width: 300px;
+  width: 200px;
+  min-width: 280px;
 }
 
 .layout-main-container {

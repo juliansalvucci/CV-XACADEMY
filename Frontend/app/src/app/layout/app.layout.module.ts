@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule } from '@angular/router';
 import { AppLayoutComponent } from './app.layout.component';
-import { AppSidebarComponent } from './components';
+import { AppSidebarComponent } from './components/sidebar/app.sidebar.component';
 
 @NgModule({
   declarations: [AppLayoutComponent, AppSidebarComponent],
