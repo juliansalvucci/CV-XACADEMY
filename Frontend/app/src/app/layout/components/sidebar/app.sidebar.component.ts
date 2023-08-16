@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MENU_ITEMS } from '../../../constants';
+import { MENU_ITEMS } from './app.menu.constants';
 
 @Component({
   selector: 'app-sidebar',
