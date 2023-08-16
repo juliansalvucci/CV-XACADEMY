@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-//
-
-// import { SharedModule } from 'src/shared/shared/shared.module';
-import { AppLayoutModule } from './layout';
+import { AppLayoutModule } from './layout/app.layout.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    AppRoutingModule,
-    AppLayoutModule,
-    // SharedModule,
-  ],
+  imports: [AppRoutingModule, AppLayoutModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
