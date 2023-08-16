@@ -1,0 +1,23 @@
+<div class="sidebar-wrapper">
+  <div class="sidebar-logotype">
+    <img src="../../../../assets/logo.png" alt="logotype" width="120px" />
+  </div>
+  <div class="sidebar-main-container">
+    <div class="sidebar-main">
+      <div class="sidebar-item" *ngFor="let menuItem of menuItems">
+        <a
+          class="sidebar-link"
+          [routerLink]="menuItem.route"
+          routerLinkActive="active"
+        >
+          <img
+            class="sidebar-icon"
+            [src]="menuItem.icon"
+            alt="{{ menuItem.title }} icon"
+          />
+          {{ menuItem.title }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
