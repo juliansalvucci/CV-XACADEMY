@@ -10,6 +10,7 @@ router.put( '/:resumeId', cvController.updateCv ); // Actualiza un cv por id.
 router.delete( '/:resumeId', cvController.deleteCv );
 
 // Rutas para resume -> experience
-router.get( '/:resumeId/experience/:expId', expController.getAllExp );
+router.get( '/:resumeId/experience/', expController.getAllExp );
+router.get( '/:resumeId/experience/:expId', expController.getExp );
 
 module.exports = router;
