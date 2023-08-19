@@ -10,13 +10,11 @@ export class ResumeComponent {
 
   registerForm = this.fb.group({
     id: [0],
-    nombre: [''],
-    apellidos: [''],
-    correoElectronico: [''],
-    telefono: [''],
-    dirección: [''],
-    codigoPostal: [''],
-    localidad: [''],
+    firstName: [''],
+    lastName: [''],
+    contactEmail: [''],
+    contactPhone: [''],
+    photoUrl: [''],
   });
 
   register() {
