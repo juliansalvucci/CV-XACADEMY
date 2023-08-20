@@ -7,10 +7,10 @@ export const API_ROUTES = {
   },
 
   CURRICULUM: {
-    ALTA: `${ENV.apiUrl}curriculum`,
-    BAJA: `${ENV.apiUrl}curriculum/`,
-    MODIFICACION: `${ENV.apiUrl}curriculum/`,
-    CONSULTA: `${ENV.apiUrl}curriculum`,
-    CONSULTAPORID: `${ENV.apiUrl}curriculum/`,
+    ALTA: `${ENV.apiUrl}createCv`,
+    BAJA: `${ENV.apiUrl}deleteCv/`,
+    MODIFICACION: `${ENV.apiUrl}updateCv/`,
+    CONSULTA: `${ENV.apiUrl}getAllCvs`,
+    CONSULTAPORID: `${ENV.apiUrl}getCv/`,
   },
 };

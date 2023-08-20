@@ -6,7 +6,7 @@ import { API_ROUTES } from '../routes/apiRoutes';
 @Injectable({
   providedIn: 'root',
 })
-export class MarcaService {
+export class curriculumService {
   constructor(private http: HttpClient) {}
 
   URL = API_ROUTES.CURRICULUM;
