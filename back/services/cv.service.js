@@ -1,8 +1,9 @@
 const cvModel = require('../models').Resume;
+const { Experience } = require('../models');
 
 const getAllCvs = async() => {
     try {
-        const cvs = await cvModel.findAll();
+        const cvs = await cvModel.findAll({ include: { model: Experience }});
         return cvs;
     } catch(error) {
         console.error('Could not get cvs!', error);
