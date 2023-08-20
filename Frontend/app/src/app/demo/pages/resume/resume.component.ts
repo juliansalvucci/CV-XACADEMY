@@ -20,10 +20,8 @@ export class ResumeComponent {
 
   register() {
     console.log(this.registerForm.value);
-    /*
     this.service.alta(this.registerForm.value).subscribe(() => {
       console.log('exito');
     });
-    */
   }
 }
