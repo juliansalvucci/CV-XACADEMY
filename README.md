@@ -8,7 +8,6 @@ La Resume Builder App es una aplicación que permite a los usuarios crear y dise
 
 ## Equipo 18 de Santex Academy
 
-- Emanuel Flores - Backend
 - Lucas Paglia - Backend
 - Julian Salvucci - Frontend
 - Juan Calero - Frontend
@@ -91,9 +90,6 @@ Nuestros mentores en el equipo son:
 ## Contacto
 
 Para preguntas o sugerencias sobre esta app:
-
-- **Emanuel Flores** (Backend)
-  - Email: emanuelzero@gmail.com
 
 - **Jaime Lozano** (Testing/QA)
   - Email: jlozanog35@gmail.com
