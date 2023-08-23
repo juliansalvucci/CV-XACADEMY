@@ -1,14 +1,18 @@
 const { cvService } = require('../services');
 
 const getAllCvs = async(req, res) => {
+    try {
+        const cvs = await cvService.getAllCvs(); // Llama a la funcion en el service para obtener los cvs.
 
-    const cvs = await cvService.getAllCvs(); // Llama a la funcion en el service para obtener los cvs.
-
-    if(!cvs) { // Si no encuentra cvs...
-        res.status(404).json({ action: 'getAllCvs', error: 'No Cvs Found!' });
-    } else { // Si los encuentra, mostrarlos.
-        res.json(cvs);
+        if(!cvs) { // Si no encuentra cvs...
+            res.status(404).json({ action: 'getAllCvs', error: 'No Cvs Found!' });
+        } else { // Si los encuentra, mostrarlos.
+            res.json(cvs);
+        }
+    } catch(error) {
+        res.status(500).json({ action: 'getAllCvs', error: error.message});
     }
+        
 };
 
 const getCv = async(req, res) => {
