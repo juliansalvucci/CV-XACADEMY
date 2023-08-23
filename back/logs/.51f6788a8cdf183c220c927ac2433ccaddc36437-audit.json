@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 15
+    },
+    "auditLog": "C:\\Users\\JulianSalvucci\\Desktop\\Nueva carpeta\\back\\logs\\.51f6788a8cdf183c220c927ac2433ccaddc36437-audit.json",
+    "files": [
+        {
+            "date": 1691011018927,
+            "name": "C:\\Users\\JulianSalvucci\\Desktop\\Nueva carpeta\\back\\logs\\undefined-2023-08-02.log",
+            "hash": "552e71f4a9bc9945d3d712ae945357a813f110ce0bab226aa37692a6f0119dff"
+        }
+    ],
+    "hashType": "sha256"
+}
