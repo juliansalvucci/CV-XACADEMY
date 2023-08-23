@@ -53,4 +53,36 @@ const createExp = async(req, res) => {
     }
 }
 
-module.exports = { getAllExp, getExp, createExp };
+const updateExp = async(req, res) => {
+    try {
+        const resume = await cvService.getCv(req.params.resumeId);
+
+        if(!resume) {
+            res.status(404).json({ action: 'updateExp', error: `Can not update a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` })
+        } else {
+            const expToUpdate = await expService.updateExp(req.params.resumeId, req.params.expId, req.body);
+            res.json(expToUpdate);
+        }
+    } catch(error) {
+        res.status(500).json({ action: 'updateExp', error: error.message });
+    }
+}
+
+const deleteExp = async(req, res) => {
+    try {
+        const resume = await cvService.getCv(req.params.resumeId);
+
+        if(!resume) {
+            res.status(404).json({ action: 'deleteExp', error: `Can not delete a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` })
+        } else { 
+            const expToDelete = await expService.deleteExp(req.params.resumeId, req.params.expId);
+            if(expToDelete) {
+                res.json({ message: `Experience with id ${req.params.expId} was successfuly deleted!` });
+            }
+        }
+    } catch(error) {
+        res.status(500).json({ action: 'deleteExp', error: error.message });
+    }
+}
+
+module.exports = { getAllExp, getExp, createExp, updateExp, deleteExp };

@@ -40,4 +40,51 @@ const createExp = async(resumeId, expBody) => {
     }
 }
 
-module.exports = { getAllExp, getExp, createExp };
+const updateExp = async(resumeId, expId, expBodyUpdated) => {
+    try {
+        const expToUpdate = await expModel.findByPk(expId, {
+            where: {
+                resumeId: resumeId
+            }
+        });
+
+        if(expToUpdate) {
+            expToUpdate.set({
+                jobTitle: expBodyUpdated.jobTitle,
+                company: expBodyUpdated.company,
+                startDate: expBodyUpdated.startDate,
+                endDate: expBodyUpdated.endDate,
+                description: expBodyUpdated.description
+            });
+            await expToUpdate.save();
+        }
+        return expToUpdate;
+    } catch(error) {
+        console.error('Could not update experience!', error);
+        throw error;
+    }
+}
+
+const deleteExp = async(resumeId, expId) => {
+    try {
+        const expToDelete = await expModel.findByPk(expId, {
+            where: {
+                resumeId: resumeId
+            }
+        });
+
+        if(expToDelete) {
+            expToDelete.destroy({
+                where: {
+                    id: expId
+                }
+            })
+        };
+        return expToDelete;
+    } catch(error) {
+        console.error('Could not delete work experience!', error);
+        throw error;
+    }
+}
+
+module.exports = { getAllExp, getExp, createExp, updateExp, deleteExp };

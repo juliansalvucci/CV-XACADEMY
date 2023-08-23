@@ -27,6 +27,7 @@ const createCv = async(cv) => {
         return newCv;
     } catch(error) {
         console.error('Could not create a new cv', error);
+        throw error;
     }
 }
 
@@ -62,6 +63,7 @@ const deleteCv = async(resumeId) => {
         }
     } catch(error) {
         console.error('Could not delete cv!', error);
+        throw error;
     }
 }
 

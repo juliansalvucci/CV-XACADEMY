@@ -13,5 +13,7 @@ router.delete( '/:resumeId', cvController.deleteCv );
 router.get( '/:resumeId/experience', expController.getAllExp );
 router.get( '/:resumeId/experience/:expId', expController.getExp );
 router.post( '/:resumeId/experience', expController.createExp);
+router.put( '/:resumeId/experience/:expId', expController.updateExp);
+router.delete( '/:resumeId/experience/:expId', expController.deleteExp);
 
 module.exports = router;
