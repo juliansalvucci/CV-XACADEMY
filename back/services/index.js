@@ -1,4 +1,4 @@
-const cvService = require('./cv.service');
+const resumeService = require('./resume.service');
 const expService = require('./exp.service');
 
-module.exports = { cvService, expService };
+module.exports = { resumeService, expService };

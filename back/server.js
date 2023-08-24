@@ -1,28 +1,20 @@
 require("dotenv").config();
 const express = require('express');
 const { initializeDb } = require('./config/db');
-const { cvRoute } = require('./routes');
-//const cvModel = require('./models').Resume;
+const { resumeRoutes } = require('./routes');
 
 const app = express();
 const port = process.env.PORT;
+
+// Configuración de CORS
+const cors = require('cors'); 
+app.use(cors());
 
 // MiddleWares
 app.use(express.json());
 
 // Rutas
-app.use('/cv', cvRoute);
-
-/* Función de prueba para crear cv's.
-app.post('/crearcv', (req, res) => {
-    cvModel.create(req.body)
-        .then((data) => {
-            res.json({datos:data});
-        })
-        .catch((error) => {
-            res.json( {error: error });
-        });
-}); */
+app.use('/resume', resumeRoutes);
 
 app.listen(port, async () => {
     await initializeDb();
