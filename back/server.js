@@ -6,6 +6,10 @@ const { resumeRoutes } = require('./routes');
 const app = express();
 const port = process.env.PORT;
 
+// Configuración de CORS
+const cors = require('cors'); 
+app.use(cors());
+
 // MiddleWares
 app.use(express.json());
 
