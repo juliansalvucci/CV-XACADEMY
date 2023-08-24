@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require('express');
 const { initializeDb } = require('./config/db');
-const { cvRoute } = require('./routes');
+const { resumeRoutes } = require('./routes');
 
 const app = express();
 const port = process.env.PORT;
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use('/cv', cvRoute);
+app.use('/resume', resumeRoutes);
 
 app.listen(port, async () => {
     await initializeDb();

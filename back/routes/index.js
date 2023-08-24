@@ -1,3 +1,3 @@
-const cvRoute = require('./cv.routes');
+const resumeRoutes = require('./resume.routes');
 
-module.exports = { cvRoute };
+module.exports = { resumeRoutes };

@@ -1,4 +1,4 @@
-const cvController = require('./cv.controller');
+const resumeController = require('./resume.controller');
 const expController = require('./exp.controller');
 
-module.exports = { cvController, expController };
+module.exports = { resumeController, expController };

@@ -1,8 +1,8 @@
-const { expService, cvService } = require('../services');
+const { expService, resumeService } = require('../services');
 
 const getAllExp = async(req, res) => {
     try {
-        const resume = await cvService.getCv(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
+        const resume = await resumeService.getResume(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
 
         if(!resume) { // Si no existe ese cv, mostrar error.
             res.status(404).json({ action: 'getAllExp', error: `Can not get a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` });
@@ -21,7 +21,7 @@ const getAllExp = async(req, res) => {
 
 const getExp = async(req, res) => {
     try {
-        const resume = await cvService.getCv(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
+        const resume = await resumeService.getResume(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
 
         if(!resume) { // Si no existe ese cv, mostrar error.
             res.status(404).json({ action: 'getExp', error: `Can not get a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` });
@@ -40,7 +40,7 @@ const getExp = async(req, res) => {
 
 const createExp = async(req, res) => {
     try {
-        const resume = await cvService.getCv(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
+        const resume = await resumeService.getResume(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
 
         if(!resume) { // Si no existe ese cv, mostrar error.
             res.status(404).json({ action: 'createExp', error: `Can not create a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` });
@@ -55,7 +55,7 @@ const createExp = async(req, res) => {
 
 const updateExp = async(req, res) => {
     try {
-        const resume = await cvService.getCv(req.params.resumeId);
+        const resume = await resumeService.getResume(req.params.resumeId);
 
         if(!resume) {
             res.status(404).json({ action: 'updateExp', error: `Can not update a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` })
@@ -70,7 +70,7 @@ const updateExp = async(req, res) => {
 
 const deleteExp = async(req, res) => {
     try {
-        const resume = await cvService.getCv(req.params.resumeId);
+        const resume = await resumeService.getResume(req.params.resumeId);
 
         if(!resume) {
             res.status(404).json({ action: 'deleteExp', error: `Can not delete a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` })
