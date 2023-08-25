@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -6,8 +6,9 @@ import { NavigationEnd, Router } from '@angular/router';
   templateUrl: './app.layout.component.html',
   styleUrls: ['./app.layout.component.css'],
 })
-export class AppLayoutComponent {
+export class AppLayoutComponent implements OnInit {
   showButton = false;
+  isLoading = true;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
@@ -15,5 +16,11 @@ export class AppLayoutComponent {
         this.showButton = event.url !== '/app/resumes';
       }
     });
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1200);
   }
 }
