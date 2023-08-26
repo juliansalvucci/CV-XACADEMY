@@ -5,6 +5,9 @@
   <div class="layout-main-container">
     <div class="layout-main">
       <router-outlet />
+      <app-floating-button *ngIf="showButton" />
     </div>
   </div>
+
+  <app-loading *ngIf="isLoading" />
 </div>

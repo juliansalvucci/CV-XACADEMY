@@ -14,7 +14,7 @@
 }
 
 .logotype {
-  width: 150px;
+  width: 120px;
 }
 
 .sidebar-main-container {
@@ -50,8 +50,16 @@
 }
 
 .sidebar-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-text {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .active {
