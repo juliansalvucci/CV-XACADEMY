@@ -1,1 +1,50 @@
-<router-outlet />
+<div class="container d-flex justify-content-center">
+  <div class="col-md-6">
+    <h1 class="text-center">Datos personales</h1>
+    <div class="text-center">
+      <form [formGroup]="registerForm">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="apellidos" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput formControlName="correoElectronico" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Teléfono</mat-label>
+          <input matInput formControlName="telefono" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Dirección</mat-label>
+          <input matInput formControlName="dirección" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>CódigoPostal</mat-label>
+          <input matInput formControlName="codigoPostal" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Localidad</mat-label>
+          <input matInput formControlName="localidad" />
+        </mat-form-field>
+      </form>
+    </div>
+    <br />
+    <div class="text-center">
+      <button mat-raised-button color="primary" (click)="register()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+
+
