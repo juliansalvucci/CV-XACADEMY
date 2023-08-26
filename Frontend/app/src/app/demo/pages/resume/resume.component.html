@@ -23,6 +23,141 @@
           <input matInput formControlName="contactPhone" />
         </mat-form-field>
         <br />
+        <h1 class="text-center">Formación</h1>
+        <br />
+        <mat-form-field>
+          <mat-label>Institución</mat-label>
+          <input matInput formControlName="contactPhone" />
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Formación</mat-label>
+          <input matInput formControlName="contactPhone" />
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha de inicio</mat-label>
+          <input matInput [matDatepicker]="pickerInicioFormacion" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerInicioFormacion"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerInicioFormacion></mat-datepicker>
+        </mat-form-field>
+
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha de finalización</mat-label>
+          <input matInput [matDatepicker]="pickerFinFormacion" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerFinFormacion"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerFinFormacion></mat-datepicker>
+        </mat-form-field>
+
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <br />
+        <h1 class="text-center">Experiencia</h1>
+        <br />
+        <mat-form-field>
+          <mat-label>Puesto</mat-label>
+          <input matInput formControlName="contactPhone" />
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Empleador</mat-label>
+          <input matInput formControlName="contactPhone" />
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha de inicio</mat-label>
+          <input matInput [matDatepicker]="pickerInicioExp" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerInicioExp"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerInicioExp></mat-datepicker>
+        </mat-form-field>
+
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha de finalización</mat-label>
+          <input matInput [matDatepicker]="pickerFinExp" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerFinExp"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerFinExp></mat-datepicker>
+        </mat-form-field>
+
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <br />
+        <h1 class="text-center">Proyectos</h1>
+        <br />
+        <mat-form-field>
+          <mat-label>Nombre de proyecto</mat-label>
+          <input matInput formControlName="contactPhone" />
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha de inicio</mat-label>
+          <input matInput [matDatepicker]="pickerInicioProyecto" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerInicioProyecto"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerInicioProyecto></mat-datepicker>
+        </mat-form-field>
+
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha de finalización</mat-label>
+          <input matInput [matDatepicker]="pickerFinProyecto" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerFinProyecto"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerFinProyecto></mat-datepicker>
+        </mat-form-field>
+
+        <br />
+        <br />
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <br />
+        <h1 class="text-center">Competencias</h1>
+        <br />
+        <mat-form-field>
+          <mat-label>Habilidad</mat-label>
+          <input matInput formControlName="contactPhone" />
+        </mat-form-field>
+        <br />
+        <mat-label>Nivel</mat-label>
+        <mat-slider>
+          <input matSliderThumb />
+        </mat-slider>
+        <br />
       </form>
     </div>
     <br />
