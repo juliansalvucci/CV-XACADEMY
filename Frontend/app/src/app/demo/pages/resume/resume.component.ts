@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { curriculumService } from 'src/app/services/curriculum.service';
+import { curriculumService } from 'src/app/services/resume/curriculum.service';
 
 @Component({
   selector: 'app-resume',

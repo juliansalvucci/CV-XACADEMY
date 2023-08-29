@@ -13,4 +13,13 @@ export const API_ROUTES = {
     CONSULTA: `${ENV.apiUrl}getAllCvs`,
     CONSULTAPORID: `${ENV.apiUrl}getCv/`,
   },
+
+  EXPERIENCE: {
+    ALTA: `${ENV.apiUrl}createCv`,
+    BAJA: `${ENV.apiUrl}deleteCv/`,
+    MODIFICACION: `${ENV.apiUrl}updateCv/`,
+    CONSULTA: `${ENV.apiUrl}getAllCvs`,
+    CONSULTAPORID: `${ENV.apiUrl}getCv/`,
+  },
 };
+
