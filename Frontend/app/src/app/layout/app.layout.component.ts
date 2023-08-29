@@ -21,6 +21,6 @@ export class AppLayoutComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.isLoading = false;
-    }, 1200);
+    }, 0);
   }
 }
