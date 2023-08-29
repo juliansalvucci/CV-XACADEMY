@@ -1,4 +1,4 @@
-export interface ICurriculum {
+export interface IResume {
   id: number;
   firstName: string;
   lastName: string;

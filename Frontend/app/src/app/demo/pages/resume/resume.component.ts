@@ -5,12 +5,12 @@ import { curriculumService } from 'src/app/services/curriculum.service';
 @Component({
   selector: 'app-resume',
   templateUrl: './resume.component.html',
-  styleUrls: ['./resume.component.css']
+  styleUrls: ['./resume.component.css'],
 })
 export class ResumeComponent {
   constructor(private fb: FormBuilder, private service: curriculumService) {}
 
-  registerForm = this.fb.group({
+  resumeForm = this.fb.group({
     id: [0],
     firstName: [''],
     lastName: [''],
@@ -19,9 +19,40 @@ export class ResumeComponent {
     photoUrl: [''],
   });
 
+  educationForm = this.fb.group({
+    institution: [''],
+    degree: [''],
+    startDate: [''],
+    endDate: [''],
+    description: [''],
+    resumeId: [''],
+  });
+
+  experienceForm = this.fb.group({
+    jobTitle: [''],
+    company: [''],
+    startDate: [''],
+    endDate: [''],
+    description: [''],
+    resumeId: [''],
+  });
+
+  projectForm = this.fb.group({
+    projectName: [''],
+    description: [''],
+    startDate: [''],
+    endDate: [''],
+    resumeId: [''],
+  });
+
+  skillForm = this.fb.group({
+    skillName: [''],
+    resumeId: [''],
+  })
+
   register() {
-    console.log(this.registerForm.value);
-    this.service.alta(this.registerForm.value).subscribe(() => {
+    console.log(this.resumeForm.value);
+    this.service.alta(this.resumeForm.value).subscribe(() => {
       console.log('exito');
     });
   }
