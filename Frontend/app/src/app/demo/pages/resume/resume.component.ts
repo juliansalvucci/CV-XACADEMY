@@ -48,7 +48,7 @@ export class ResumeComponent {
   skillForm = this.fb.group({
     skillName: [''],
     resumeId: [''],
-  })
+  });
 
   register() {
     console.log(this.resumeForm.value);
