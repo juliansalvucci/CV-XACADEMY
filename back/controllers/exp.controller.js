@@ -5,7 +5,7 @@ const getAllExp = async(req, res) => {
         const resume = await resumeService.getResume(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
 
         if(!resume) { // Si no existe ese cv, mostrar error.
-            res.status(404).json({ action: 'getAllExp', error: `Can not get a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` });
+            res.status(404).json({ action: 'getAllExp', error: `Can not get a work experience on a resume with id: ${req.params.resumeId}, because the resume does not exist!` });
         } else { 
             const exps = await expService.getAllExp(req.params.resumeId);
             if(!exps) { 
@@ -24,7 +24,7 @@ const getExp = async(req, res) => {
         const resume = await resumeService.getResume(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
 
         if(!resume) { // Si no existe ese cv, mostrar error.
-            res.status(404).json({ action: 'getExp', error: `Can not get a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` });
+            res.status(404).json({ action: 'getExp', error: `Can not get a work experience on a resume with id: ${req.params.resumeId}, because the resume does not exist!` });
         } else { 
             const exp = await expService.getExp(req.params.resumeId, req.params.expId);
             if(!exp) {
@@ -43,7 +43,7 @@ const createExp = async(req, res) => {
         const resume = await resumeService.getResume(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
 
         if(!resume) { // Si no existe ese cv, mostrar error.
-            res.status(404).json({ action: 'createExp', error: `Can not create a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` });
+            res.status(404).json({ action: 'createExp', error: `Can not create a work experience on a resume with id: ${req.params.resumeId}, because the resume does not exist!` });
         } else { 
             const newExp = await expService.createExp(req.params.resumeId, req.body);
             res.json(newExp);
@@ -58,7 +58,7 @@ const updateExp = async(req, res) => {
         const resume = await resumeService.getResume(req.params.resumeId);
 
         if(!resume) {
-            res.status(404).json({ action: 'updateExp', error: `Can not update a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` })
+            res.status(404).json({ action: 'updateExp', error: `Can not update a work experience on a resume with id: ${req.params.resumeId}, because the resume does not exist!` })
         } else {
             const expToUpdate = await expService.updateExp(req.params.resumeId, req.params.expId, req.body);
             res.json(expToUpdate);
@@ -73,7 +73,7 @@ const deleteExp = async(req, res) => {
         const resume = await resumeService.getResume(req.params.resumeId);
 
         if(!resume) {
-            res.status(404).json({ action: 'deleteExp', error: `Can not delete a work experience on a resume with id: ${req.params.resumeId}, because it does not exist!` })
+            res.status(404).json({ action: 'deleteExp', error: `Can not delete a work experience on a resume with id: ${req.params.resumeId}, because the resume does not exist!` })
         } else { 
             const expToDelete = await expService.deleteExp(req.params.resumeId, req.params.expId);
             if(expToDelete) {
