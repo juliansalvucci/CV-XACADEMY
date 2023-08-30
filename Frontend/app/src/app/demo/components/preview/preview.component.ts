@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-preview',
@@ -10,8 +10,6 @@ import { Component } from '@angular/core';
         height: 100vh;
         background-color: #fff;
         padding: 2rem;
-        overflow-y: auto;
-        box-shadow: inset 0px 0px 0px 60px rgba(0, 0, 0, 0.1);
       }
     `,
   ],
