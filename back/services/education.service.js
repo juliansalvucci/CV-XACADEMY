@@ -74,7 +74,7 @@ const deleteEducation = async(resumeId, educationId) => {
         });
 
         if(educationToDelete) {
-            expToDelete.destroy({
+            educationToDelete.destroy({
                 where: {
                     id: educationId
                 }
