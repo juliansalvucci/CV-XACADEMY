@@ -1,6 +1,5 @@
+import { FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { IExperience } from 'src/app/interfaces/IExperience';
 import { curriculumService } from 'src/app/services/resume/curriculum.service';
 
 @Component({
@@ -10,8 +9,6 @@ import { curriculumService } from 'src/app/services/resume/curriculum.service';
 })
 export class ResumeComponent {
   constructor(private fb: FormBuilder, private service: curriculumService) {}
-
-  private experiences : IExperience[] | undefined
 
   resumeForm = this.fb.group({
     firstName: [''],
@@ -56,17 +53,8 @@ export class ResumeComponent {
     resumeId: [''],
   });
 
-  agregarExperiencia() {
-    const experiencesArray = this.resumeForm.get('experiences') as FormArray;
-    const newExperienceForm = this.experiences; // Crear una nueva instancia del formulario de experiencia
-    experiencesArray.push(newExperienceForm);
-  }
-  
-
   register() {
     console.log(this.experienceForm);
-    
-    this.agregarExperiencia();
     console.log(this.resumeForm.value);
     /*
     this.service.alta(this.resumeForm.value).subscribe(() => {
