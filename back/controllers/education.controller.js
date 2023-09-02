@@ -1,13 +1,13 @@
 const { educationService ,resumeService } = require('../services');
 
-const getAllEducation = async(req, res) => {
+const getAllEducations = async(req, res) => {
     try {
         const resume = await resumeService.getResume(req.params.resumeId); // Primero nos aseguramos de que haya un id de cv valido.
 
         if(!resume) { // Si no existe ese cv, mostrar error.
             res.status(404).json({ action: 'getAllEducation', error: `Can not get an education on a resume with id: ${req.params.resumeId}, because the resume does not exist!` });
         } else { 
-            const exps = await educationService.getAllEducation(req.params.resumeId);
+            const exps = await educationService.getAllEducations(req.params.resumeId);
             if(!exps) { 
                 res.status(404).json({ action: 'getAllEducation', error: 'Could not get all educations!'});
             } else {
@@ -85,4 +85,4 @@ const deleteEducation = async(req, res) => {
     }
 }
 
-module.exports = { getAllEducation, getEducation, createEducation, updateEducation, deleteEducation };
+module.exports = { getAllEducations, getEducation, createEducation, updateEducation, deleteEducation };
