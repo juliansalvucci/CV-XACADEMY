@@ -1,6 +1,7 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { curriculumService } from 'src/app/services/resume/curriculum.service';
+import { DataresumecontainerService } from 'src/app/services/dataresumecontainer/dataresumecontainer.service';
 
 @Component({
   selector: 'app-resume',
@@ -8,7 +9,11 @@ import { curriculumService } from 'src/app/services/resume/curriculum.service';
   styleUrls: ['./resume.component.css'],
 })
 export class ResumeComponent {
-  constructor(private fb: FormBuilder, private service: curriculumService) {}
+  constructor(
+    private fb: FormBuilder,
+    private service: curriculumService,
+    private dataresumecontainerService: DataresumecontainerService
+  ) {}
 
   resumeForm = this.fb.group({
     firstName: [''],
@@ -54,6 +59,7 @@ export class ResumeComponent {
   });
 
   register() {
+    this.dataresumecontainerService.resume.firstName = this.resumeForm.get('firstName')?.value || "";
     console.log(this.experienceForm);
     console.log(this.resumeForm.value);
     /*

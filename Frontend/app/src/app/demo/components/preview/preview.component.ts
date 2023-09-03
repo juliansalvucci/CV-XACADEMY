@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Subscription, interval } from 'rxjs';
+import { DataresumecontainerService } from 'src/app/services/dataresumecontainer/dataresumecontainer.service';
 
 @Component({
   selector: 'app-preview',
@@ -15,5 +17,25 @@ import { Component, Input } from '@angular/core';
   ],
 })
 export class PreviewComponent {
-  constructor() {}
+  constructor(private dataresumecontainerService: DataresumecontainerService) {}
+
+  firstName = 'name';
+  lastName = '';
+  contactEmail = '';
+  contactPhone = '';
+  photoUrl = '';
+
+  pollingSubscription!: Subscription;
+
+  ngOnInit() {
+    // Inicia el polling cada 5 segundos (5000 ms)
+    this.pollingSubscription = interval(10).subscribe(() => {
+      this.firstName = this.dataresumecontainerService.resume.firstName;
+    });
+  }
+
+  ngOnDestroy() {
+    // Asegúrate de desuscribirte cuando el componente se destruye
+    this.pollingSubscription.unsubscribe();
+  }
 }

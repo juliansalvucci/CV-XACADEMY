@@ -8,7 +8,7 @@
             <h1 class="h5 fw-normal pb-2">Datos personales</h1>
             <mat-form-field>
               <mat-label>Nombres</mat-label>
-              <input matInput formControlName="firstName" />
+              <input matInput formControlName="firstName" (keyup)="register()" />
             </mat-form-field>
 
             <mat-form-field>
