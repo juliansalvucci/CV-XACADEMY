@@ -28,14 +28,12 @@ export class PreviewComponent {
   pollingSubscription!: Subscription;
 
   ngOnInit() {
-    // Inicia el polling cada 5 segundos (5000 ms)
     this.pollingSubscription = interval(10).subscribe(() => {
       this.firstName = this.dataresumecontainerService.resume.firstName;
     });
   }
 
   ngOnDestroy() {
-    // Asegúrate de desuscribirte cuando el componente se destruye
     this.pollingSubscription.unsubscribe();
   }
 }
