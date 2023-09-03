@@ -3,11 +3,15 @@
     <div class="h3 p-3">Curriculum Vitae</div>
     <div class="d-flex py-2 flex-column px-3">
       <p class="text-muted py-1 m-0">Datos personales:</p>
-      <p class="m-0">Nombres</p>
-      <p class="m-0">Apellidos</p>
-      <p class="m-0">Correo electrónico</p>
-      <p class="m-0">Télefono</p>
+      <p class="m-0">Nombres: {{firstName}}</p>
+      <p class="m-0">Apellidos: {{lastName}}</p>
+      <p class="m-0">Correo electrónico: {{contactEmail}}</p>
+      <p class="m-0">Télefono: {{contactPhone}}</p>
     </div>
+    <br>
+    <!--
+
+    
     <div class="d-flex py-2 flex-column px-3">
       <p class="text-muted py-1 m-0">Formación:</p>
       <p class="m-0">Institución</p>
@@ -16,6 +20,24 @@
       <p class="m-0">Fecha de finalización</p>
       <p class="m-0">Descripción</p>
     </div>
+    -->
+    <div>
+      <div *ngFor="let education of educationList">
+        <br>
+        <mat-card>
+          <mat-card-content>
+            <h4>Educación</h4>
+            <p>Institución:{{ education.institution }}</p>
+            <p>Formación: {{ education.degree }}</p>
+            <p>Descripción: {{ education.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <br>
+    <!--
+
+    
     <div class="d-flex py-2 flex-column px-3">
       <p class="text-muted py-1 m-0">Experiencia:</p>
       <p class="m-0">Puesto</p>
@@ -24,6 +46,24 @@
       <p class="m-0">Fecha de finalización</p>
       <p class="m-0">Descripción</p>
     </div>
+    -->
+    <div>
+      <div *ngFor="let experience of experienceList">
+        <br>
+        <mat-card>
+          <mat-card-content>
+            <h4>Experiencia</h4>
+            <p>Nombre: {{ experience.jobTitle }}</p>
+            <p>Empleador: {{ experience.company }}</p>
+            <p>Descripción: {{ experience.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <br>
+    <!--
+
+    
     <div class="d-flex py-2 flex-column px-3">
       <p class="text-muted py-1 m-0">Proyectos:</p>
       <p class="m-0">Nombre de proyecto</p>
@@ -31,10 +71,37 @@
       <p class="m-0">Fecha de finalización</p>
       <p class="m-0">Descripción</p>
     </div>
+    -->
+    <div>
+      <div *ngFor="let project of projectList">
+        <br>
+        <mat-card>
+          <mat-card-content>
+            <h4>Proyecto</h4>
+            <p>Nombre: {{ project.projectName }}</p>
+            <p>Descripción: {{ project.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <!--
     <div class="d-flex py-2 flex-column px-3">
       <p class="text-muted py-1 m-0">Competencias:</p>
       <p class="m-0">Habilidad</p>
       <p class="m-0">Nivel</p>
+    </div>
+    -->
+    <div>
+      <div *ngFor="let skill of skillList">
+        <br>
+        <mat-card>
+          <mat-card-content>
+            <h4>Habilidad</h4>
+            <p>Nombre: {{ skill.skillName }}</p>
+          </mat-card-content>
+        </mat-card>
+        <br>
+      </div>
     </div>
   </div>
 </div>
