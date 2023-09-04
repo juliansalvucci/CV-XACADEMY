@@ -1,6 +1,6 @@
 const educationModel = require('../models').Education;
 
-const getAllEducation = async(resumeId) => {
+const getAllEducations = async(resumeId) => {
     try {
         const exps = await educationModel.findAll(
             {
@@ -82,9 +82,9 @@ const deleteEducation = async(resumeId, educationId) => {
         };
         return educationToDelete;
     } catch(error) {
-        console.error('Could not delete work experience!', error);
+        console.error('Could not delete education!', error);
         throw error;
     }
 }
 
-module.exports = { getAllEducation, getEducation, createEducation, updateEducation, deleteEducation };
+module.exports = { getAllEducations, getEducation, createEducation, updateEducation, deleteEducation };

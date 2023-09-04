@@ -12,12 +12,25 @@ module.exports = {
       skillName: {
         type: Sequelize.STRING
       },
+      resumeId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Resumes',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

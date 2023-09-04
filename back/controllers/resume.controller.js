@@ -41,7 +41,7 @@ const updateResume = async(req, res) => {
     try {
         const resumeToUpdate = await resumeService.updateResume(req.body, req.params.resumeId);
         if(!resumeToUpdate) {
-            res.status(404).json({ action: 'updateResume', error: `Resume with id ${req.params.resumeId} does not exist, can't update a resume that does not exist!` });
+            res.status(404).json({ action: 'updateResume', error: `Resume with id ${req.params.resumeId} does not exist!` });
         } else {
             res.json(resumeToUpdate);
         }
