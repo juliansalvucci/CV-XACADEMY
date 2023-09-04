@@ -1,12 +1,13 @@
 const resumeModel = require('../models').Resume;
-const { Experience, Education, Project } = require('../models');
+const { Experience, Education, Project, Skill } = require('../models');
 
 const getAllResumes = async() => {
     try {
         const resumes = await resumeModel.findAll({ include: [
             { model: Experience },
             { model: Education },
-            { model: Project }
+            { model: Project },
+            { model: Skill }
         ]});
         return resumes;
     } catch(error) {

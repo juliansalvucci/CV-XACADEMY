@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { resumeController, expController, educationController, projectController } = require('../controllers');
+const { resumeController, expController, educationController, projectController, skillController } = require('../controllers');
 
 // Rutas para resume
 router.get( '/', resumeController.getAllResumes ); // Obtiene todos los cvs.
@@ -23,11 +23,18 @@ router.post( '/:resumeId/education', educationController.createEducation );
 router.put( '/:resumeId/education/:educationId', educationController.updateEducation );
 router.delete( '/:resumeId/education/:educationId', educationController.deleteEducation );
 
-// Rutas para resume -> Projects
+// Rutas para resume -> Project
 router.get( '/:resumeId/project', projectController.getAllProjects );
 router.get( '/:resumeId/project/:projectId', projectController.getProject );
 router.post( '/:resumeId/project', projectController.createProject );
 router.put( '/:resumeId/project/:projectId', projectController.updateProject );
 router.delete( '/:resumeId/project/:projectId', projectController.deleteProject );
+
+// Rutas para resume -> Skill
+router.get( '/:resumeId/skill', skillController.getAllSkills );
+router.get( '/:resumeId/skill/:skillId', skillController.getSkill );
+router.post( '/:resumeId/skill', skillController.createSkill );
+router.put( '/:resumeId/skill/:skillId', skillController.updateSkill );
+router.delete( '/:resumeId/skill/:skillId', skillController.deleteSkill );
 
 module.exports = router;
