@@ -60,8 +60,14 @@ const updateEducation = async(req, res) => {
         if(!resume) {
             res.status(404).json({ action: 'updateEducation', error: `Can not update education on a resume with id: ${req.params.resumeId}, because the resume does not exist!` })
         } else {
-            const educationToUpdate = await educationService.updateEducation(req.params.resumeId, req.params.educationId, req.body);
-            res.json(educationToUpdate);
+            const education = await educationService.getEducation(req.params.resumeId, req.params.educationId)
+            if(!education) {
+                res.status(404).json({ action: 'updateEducation', error: `Education with id: ${req.params.resumeId} does not exist!` })
+            } else {
+                const educationToUpdate = await educationService.updateEducation(req.params.resumeId, req.params.educationId, req.body);
+                res.json(educationToUpdate);
+            }
+
         }
     } catch(error) {
         res.status(500).json({ action: 'updateEducation', error: error.message });

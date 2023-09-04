@@ -4,7 +4,7 @@ const { initializeDb } = require('./config/db');
 const { resumeRoutes } = require('./routes');
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 // Configuración de CORS
 const cors = require('cors'); 

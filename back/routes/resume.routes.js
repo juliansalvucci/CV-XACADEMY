@@ -30,6 +30,4 @@ router.post( '/:resumeId/project', projectController.createProject );
 router.put( '/:resumeId/project/:projectId', projectController.updateProject );
 router.delete( '/:resumeId/project/:projectId', projectController.deleteProject );
 
-
-
 module.exports = router;

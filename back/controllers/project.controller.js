@@ -26,11 +26,11 @@ const getProject = async(req, res) => {
         if(!resume) { // Si no existe ese cv, mostrar error.
             res.status(404).json({ action: 'getProject', error: `Can not get project on a resume with id: ${req.params.resumeId}, because the resume does not exist!` });
         } else { 
-            const exp = await projectService.getProject(req.params.resumeId, req.params.projectId);
-            if(!exp) {
-                res.status(404).json({ action: 'getProject', error: `Could not get project with id ${req.params.resumeId}`});
+            const project = await projectService.getProject(req.params.resumeId, req.params.projectId);
+            if(!project) {
+                res.status(404).json({ action: 'getProject', error: `Project with id: ${req.params.projectId} does not exist`});
             } else {
-                res.json(exp);
+                res.json(project);
             }
         }
     } catch(error) {
@@ -60,8 +60,13 @@ const updateProject = async(req, res) => {
         if(!resume) {
             res.status(404).json({ action: 'updateProject', error: `Can not update project on a resume with id: ${req.params.resumeId}, because the resume does not exist!` })
         } else {
-            const projectToUpdate = await projectService.updateProject(req.params.resumeId, req.params.projectId, req.body);
-            res.json(projectToUpdate);
+            const project = await projectService.getProject(req.params.resumeId, req.params.projectId); 
+            if(!project) {
+                res.status(404).json({ action: 'updateProject', error: `Project with id: ${req.params.projectId} does not exist`})
+            } else {
+                const projectToUpdate = await projectService.updateProject(req.params.resumeId, req.params.projectId, req.body);
+                res.json(projectToUpdate);
+            }
         }
     } catch(error) {
         res.status(500).json({ action: 'updateProject', error: error.message });

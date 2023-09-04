@@ -60,8 +60,13 @@ const updateExp = async(req, res) => {
         if(!resume) {
             res.status(404).json({ action: 'updateExp', error: `Can not update a work experience on a resume with id: ${req.params.resumeId}, because the resume does not exist!` })
         } else {
-            const expToUpdate = await expService.updateExp(req.params.resumeId, req.params.expId, req.body);
-            res.json(expToUpdate);
+            const exp = await expService.getExp(req.params.resumeId, req.params.expId);
+            if(!exp) {
+                res.status(404).json({ action: 'updateExp', error: `Work experience with id: ${req.params.expId}, does not exist!`});
+            } else {
+                const expToUpdate = await expService.updateExp(req.params.resumeId, req.params.expId, req.body);
+                res.json(expToUpdate);
+            }
         }
     } catch(error) {
         res.status(500).json({ action: 'updateExp', error: error.message });
