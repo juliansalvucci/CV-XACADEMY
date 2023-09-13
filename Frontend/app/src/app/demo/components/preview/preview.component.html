@@ -61,17 +61,7 @@
       </div>
     </div>
     <br>
-    <!--
 
-    
-    <div class="d-flex py-2 flex-column px-3">
-      <p class="text-muted py-1 m-0">Proyectos:</p>
-      <p class="m-0">Nombre de proyecto</p>
-      <p class="m-0">Fecha de inicio</p>
-      <p class="m-0">Fecha de finalización</p>
-      <p class="m-0">Descripción</p>
-    </div>
-    -->
     <div>
       <div *ngFor="let project of projectList">
         <br>
@@ -84,19 +74,13 @@
         </mat-card>
       </div>
     </div>
-    <!--
-    <div class="d-flex py-2 flex-column px-3">
-      <p class="text-muted py-1 m-0">Competencias:</p>
-      <p class="m-0">Habilidad</p>
-      <p class="m-0">Nivel</p>
-    </div>
-    -->
+  
     <div>
       <div *ngFor="let skill of skillList">
         <br>
         <mat-card>
           <mat-card-content>
-            <h4>Habilidad</h4>
+            <h4>Competencia</h4>
             <p>Nombre: {{ skill.skillName }}</p>
           </mat-card-content>
         </mat-card>

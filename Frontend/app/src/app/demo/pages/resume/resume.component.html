@@ -52,7 +52,6 @@
               <mat-expansion-panel-header>
                 <mat-panel-title> Formación </mat-panel-title>
               </mat-expansion-panel-header>
-              <h1 class="h5 fw-normal pb-2">Formación</h1>
               <form [formGroup]="educationForm">
                 <mat-form-field>
                   <mat-label>Institución</mat-label>
@@ -113,6 +112,13 @@
                       <h4>{{ education.institution }}</h4>
                       <p>Formación: {{ education.degree }}</p>
                       <p>Descripción: {{ education.description }}</p>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="deleteEducation(education)"
+                      >
+                        Eliminar
+                      </button>
                     </mat-card-content>
                   </mat-card>
                 </div>
@@ -127,7 +133,7 @@
               (closed)="panelOpenState = false"
             >
               <mat-expansion-panel-header>
-                <mat-panel-title> Eduación </mat-panel-title>
+                <mat-panel-title> Experiencia </mat-panel-title>
               </mat-expansion-panel-header>
               <form [formGroup]="experienceForm">
                 <mat-form-field>
@@ -189,6 +195,13 @@
                       <h4>{{ experience.jobTitle }}</h4>
                       <p>Empleador: {{ experience.company }}</p>
                       <p>Descripción: {{ experience.description }}</p>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="deleteExperience(experience)"
+                      >
+                        Eliminar
+                      </button>
                     </mat-card-content>
                   </mat-card>
                 </div>
@@ -258,6 +271,13 @@
                     <mat-card-content>
                       <h4>{{ project.projectName }}</h4>
                       <p>Descripción: {{ project.description }}</p>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="deleteProject(project)"
+                      >
+                        Eliminar
+                      </button>
                     </mat-card-content>
                   </mat-card>
                 </div>
@@ -290,6 +310,13 @@
                   <mat-card>
                     <mat-card-content>
                       <h4>{{ skill.skillName }}</h4>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="deleteSkill(skill)"
+                      >
+                        Eliminar
+                      </button>
                     </mat-card-content>
                   </mat-card>
                   <br />
