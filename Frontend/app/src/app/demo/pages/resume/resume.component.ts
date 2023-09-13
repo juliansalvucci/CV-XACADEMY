@@ -13,6 +13,9 @@ import { ISkill } from 'src/app/interfaces/ISkill';
   styleUrls: ['./resume.component.css'],
 })
 export class ResumeComponent {
+
+  panelOpenState = false;
+
   constructor(
     private fb: FormBuilder,
     private service: curriculumService,
