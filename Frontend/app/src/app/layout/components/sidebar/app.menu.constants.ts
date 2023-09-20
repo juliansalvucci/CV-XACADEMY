@@ -12,6 +12,6 @@ export const MENU_ITEMS = [
   {
     title: 'Iniciar sesión',
     icon: '../../assets/icons/user.svg',
-    route: 'login',
+    route: '/auth/login',
   },
 ];
