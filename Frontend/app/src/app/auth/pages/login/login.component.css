@@ -1,0 +1,13 @@
+.layout-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  background-image: url("../../../../assets/login-bg.png");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 20%;
+  background-attachment: fixed;
+}
