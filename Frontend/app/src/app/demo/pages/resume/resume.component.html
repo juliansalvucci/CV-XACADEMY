@@ -135,54 +135,56 @@
               <mat-expansion-panel-header>
                 <mat-panel-title> Experiencia </mat-panel-title>
               </mat-expansion-panel-header>
-              <form [formGroup]="experienceForm">
-                <mat-form-field>
-                  <mat-label>Puesto</mat-label>
-                  <input matInput formControlName="jobTitle" />
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Empleador</mat-label>
-                  <input matInput formControlName="company" />
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Fecha de inicio</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="pickerInicioExp"
-                    formControlName="startDate"
-                  />
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="pickerInicioExp"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #pickerInicioExp></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Fecha de finalización</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="pickerFinExp"
-                    formControlName="endDate"
-                  />
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="pickerFinExp"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #pickerFinExp></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <textarea matInput formControlName="description"></textarea>
-                </mat-form-field>
-                <br />
-                <button
-                  mat-raised-button
-                  color="primary"
-                  (click)="addExperience()"
-                >
-                  Agregar experiencia
-                </button>
-              </form>
+              <div class="subform">
+                <form [formGroup]="experienceForm">
+                  <mat-form-field>
+                    <mat-label>Puesto</mat-label>
+                    <input matInput formControlName="jobTitle" />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Empleador</mat-label>
+                    <input matInput formControlName="company" />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Fecha de inicio</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="pickerInicioExp"
+                      formControlName="startDate"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="pickerInicioExp"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerInicioExp></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Fecha de finalización</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="pickerFinExp"
+                      formControlName="endDate"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="pickerFinExp"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFinExp></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Descripción</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                  </mat-form-field>
+                  <br />
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="addExperience()"
+                  >
+                    Agregar experiencia
+                  </button>
+                </form>
+              </div>
               <div>
                 <div
                   *ngFor="

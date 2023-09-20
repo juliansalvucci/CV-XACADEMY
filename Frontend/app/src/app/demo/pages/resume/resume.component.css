@@ -41,3 +41,8 @@
 .mat-mdc-form-field+.mat-mdc-form-field {
   margin-left: 8px;
 }
+
+.subform {
+  justify-content: space-between 5px;
+  justify-items: 5px;
+}
