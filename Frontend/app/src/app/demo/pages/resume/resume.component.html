@@ -52,54 +52,56 @@
               <mat-expansion-panel-header>
                 <mat-panel-title> Formación </mat-panel-title>
               </mat-expansion-panel-header>
-              <form [formGroup]="educationForm">
-                <mat-form-field>
-                  <mat-label>Institución</mat-label>
-                  <input matInput formControlName="institution" />
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Formación</mat-label>
-                  <input matInput formControlName="degree" />
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Fecha de inicio</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="pickerInicioFormacion"
-                    formControlName="startDate"
-                  />
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="pickerInicioFormacion"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #pickerInicioFormacion></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Fecha de finalización</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="pickerFinFormacion"
-                    formControlName="endDate"
-                  />
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="pickerFinFormacion"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #pickerFinFormacion></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <textarea matInput formControlName="description"></textarea>
-                </mat-form-field>
-                <br />
-                <button
-                  mat-raised-button
-                  color="primary"
-                  (click)="addEducation()"
-                >
-                  Agregar formación
-                </button>
-              </form>
+              <div class="subform">
+                <form [formGroup]="educationForm">
+                  <mat-form-field>
+                    <mat-label>Institución</mat-label>
+                    <input matInput formControlName="institution" />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Formación</mat-label>
+                    <input matInput formControlName="degree" />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Fecha de inicio</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="pickerInicioFormacion"
+                      formControlName="startDate"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="pickerInicioFormacion"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerInicioFormacion></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Fecha de finalización</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="pickerFinFormacion"
+                      formControlName="endDate"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="pickerFinFormacion"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFinFormacion></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Descripción</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                  </mat-form-field>
+                  <br />
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="addEducation()"
+                  >
+                    Agregar formación
+                  </button>
+                </form>
+              </div>
               <div>
                 <div
                   *ngFor="
@@ -220,50 +222,52 @@
               <mat-expansion-panel-header>
                 <mat-panel-title> Proyectos </mat-panel-title>
               </mat-expansion-panel-header>
-              <form [formGroup]="projectForm">
-                <mat-form-field>
-                  <mat-label>Nombre de proyecto</mat-label>
-                  <input matInput formControlName="projectName" />
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Fecha de inicio</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="pickerInicioProyecto"
-                    formControlName="startDate"
-                  />
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="pickerInicioProyecto"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #pickerInicioProyecto></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Fecha de finalización</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="pickerFinProyecto"
-                    formControlName="endDate"
-                  />
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="pickerFinProyecto"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #pickerFinProyecto></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Descripción</mat-label>
-                  <textarea matInput formControlName="description"></textarea>
-                </mat-form-field>
-                <br />
-                <button
-                  mat-raised-button
-                  color="primary"
-                  (click)="addProject()"
-                >
-                  Agregar proyecto
-                </button>
-              </form>
+              <div class="subform">
+                <form [formGroup]="projectForm">
+                  <mat-form-field>
+                    <mat-label>Nombre de proyecto</mat-label>
+                    <input matInput formControlName="projectName" />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Fecha de inicio</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="pickerInicioProyecto"
+                      formControlName="startDate"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="pickerInicioProyecto"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerInicioProyecto></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Fecha de finalización</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="pickerFinProyecto"
+                      formControlName="endDate"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="pickerFinProyecto"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFinProyecto></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Descripción</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                  </mat-form-field>
+                  <br />
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="addProject()"
+                  >
+                    Agregar proyecto
+                  </button>
+                </form>
+              </div>
               <div>
                 <div
                   *ngFor="let project of dataresumecontainerService.projectList"
@@ -296,6 +300,7 @@
               <mat-expansion-panel-header>
                 <mat-panel-title> Competencias </mat-panel-title>
               </mat-expansion-panel-header>
+              <div class="subform">
               <form [formGroup]="skillForm">
                 <mat-form-field>
                   <mat-label>Habilidad</mat-label>
@@ -306,6 +311,7 @@
                   Agregar habilidad
                 </button>
               </form>
+            </div>
               <div>
                 <div *ngFor="let skill of dataresumecontainerService.skillList">
                   <br />
