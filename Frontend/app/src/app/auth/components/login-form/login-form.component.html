@@ -1,13 +1,13 @@
 <section class="section">
   <h2 class="section-h2">Inicio de sesión</h2>
-  <form [formGroup]="formLogin" class="form" (submit)="onLogin()">
+  <form [formGroup]="formLogin" class="form" (submit)="login()">
     <div class="form-div">
       <mat-label ngClass="form-label">Usuario</mat-label>
       <mat-form-field appearance="outline">
         <input
           matInput
           placeholder="Ingrese su usuario"
-          formControlName="username"
+          formControlName="userName"
           type="text"
           required
         />
