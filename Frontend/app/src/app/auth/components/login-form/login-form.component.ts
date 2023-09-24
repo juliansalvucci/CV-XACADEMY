@@ -15,12 +15,10 @@ export class LoginFormComponent {
   constructor(private authService: AuthService,
     private fb: FormBuilder) { }
 
-
   formLogin = this.fb.group({
     userName: ["", [Validators.required]],
     password: ["", [Validators.required]]
   });
-
 
   login() {
     const login: ILogin = this.formLogin.value as ILogin
