@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { resumeController, expController, educationController, projectController, skillController } = require('../controllers');
+const { jwtValidMDW } = require('../middleware/auth-mdw');
 
 // Rutas para resume
-router.get( '/', resumeController.getAllResumes ); // Obtiene todos los cvs.
+router.get( '/', jwtValidMDW, resumeController.getAllResumes ); // Obtiene todos los cvs.
 router.get( '/:resumeId', resumeController.getResume ); // Obtiene solo un cv por 'id'.
 router.post( '/', resumeController.createResume ); // Crea un cv.
 router.put( '/:resumeId', resumeController.updateResume ); // Actualiza un cv por id.
