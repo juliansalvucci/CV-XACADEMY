@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ILogin } from 'src/app/interfaces/ILogin';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -7,21 +9,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-  constructor(private formBuilder: FormBuilder) {}
 
   public hide = true;
-  public formLogin: FormGroup = new FormGroup({});
 
-  ngOnInit(): void {}
+  constructor(private authService: AuthService,
+    private fb: FormBuilder) { }
 
-  onLogin(): void {
-    console.log('test login');
-  }
+  formLogin = this.fb.group({
+    userName: ["", [Validators.required]],
+    password: ["", [Validators.required]]
+  });
 
-  buildForm(): void {
-    this.formLogin = this.formBuilder.group({
-      username: [null, [Validators.required, Validators.pattern('[a-zA-Z]+')]],
-      password: [null, [Validators.required]],
-    });
+  login() {
+    const login: ILogin = this.formLogin.value as ILogin
+    console.log(login)
+    if (login.userName && login.password) { //Si existen entonces hago el post.
+      //this.authService.login(login);
+    }
   }
 }

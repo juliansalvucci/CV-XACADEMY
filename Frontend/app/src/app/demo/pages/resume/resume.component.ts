@@ -25,7 +25,7 @@ export class ResumeComponent {
     firstName: [''],
     lastName: [''],
     contactEmail: ['', [Validators.email]],
-    contactPhone: [''],
+    contactPhone: ['', [Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     photoUrl: [''],
     experiences: this.fb.array([]), // Debes definir esto para representar la lista de experiencias.
     projects: this.fb.array([]), // Debes definir esto para representar la lista de proyectos.

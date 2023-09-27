@@ -22,12 +22,15 @@
     </div>
     -->
     <div>
+      <h4 *ngIf="educationList.length > 0">Formación</h4>
       <div *ngFor="let education of educationList">
         <br>
         <mat-card>
           <mat-card-content>
-            <h4>Educación</h4>
             <p>Institución:{{ education.institution }}</p>
+            <p>Formación: {{ education.degree }}</p>
+            <p>Fecha de inicio: {{ education.startDate }}</p>
+            <p>Fecha de finalización: {{ education.endDate }}</p>
             <p>Formación: {{ education.degree }}</p>
             <p>Descripción: {{ education.description }}</p>
           </mat-card-content>
@@ -48,39 +51,41 @@
     </div>
     -->
     <div>
+      <h4 *ngIf="experienceList.length > 0">Experiencias</h4>
       <div *ngFor="let experience of experienceList">
         <br>
         <mat-card>
           <mat-card-content>
-            <h4>Experiencia</h4>
             <p>Nombre: {{ experience.jobTitle }}</p>
             <p>Empleador: {{ experience.company }}</p>
+            <p>Fecha de inicio: {{ experience.startDate }}</p>
+            <p>Fecha de finalización: {{ experience.endDate }}</p>
             <p>Descripción: {{ experience.description }}</p>
           </mat-card-content>
         </mat-card>
       </div>
     </div>
     <br>
-
     <div>
+      <h4 *ngIf="projectList.length > 0">Proyectos</h4>
       <div *ngFor="let project of projectList">
         <br>
         <mat-card>
           <mat-card-content>
-            <h4>Proyecto</h4>
             <p>Nombre: {{ project.projectName }}</p>
+            <p>Fecha de inicio: {{ project.startDate }}</p>
+            <p>Fecha de finalización: {{ project.endDate }}</p>
             <p>Descripción: {{ project.description }}</p>
           </mat-card-content>
         </mat-card>
       </div>
     </div>
-  
     <div>
+      <h4 *ngIf="skillList.length > 0">Competencias</h4>
       <div *ngFor="let skill of skillList">
         <br>
         <mat-card>
           <mat-card-content>
-            <h4>Competencia</h4>
             <p>Nombre: {{ skill.skillName }}</p>
           </mat-card-content>
         </mat-card>

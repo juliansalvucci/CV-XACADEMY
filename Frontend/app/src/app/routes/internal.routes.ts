@@ -1,0 +1,25 @@
+export const ROUTES_PATHS =
+{
+    AUTH:
+    {
+        DEFAULT: 'auth',
+        LOGIN: 'login',
+        PASSWORD: 'restablecer',
+        PASSRESET: 'ReinicioPassword?token=:token&email=:email'
+    }
+}
+
+export const INTERNAL_PATHS =
+{
+    AUTH_DEFAULT: `${ROUTES_PATHS.AUTH.DEFAULT}`,
+    AUTH_LOGIN: `${ROUTES_PATHS.AUTH.LOGIN}`,
+    AUTH_PASSWORD: `${ROUTES_PATHS.AUTH.PASSWORD}`,
+    AUTH_RESET: `${ROUTES_PATHS.AUTH.PASSRESET}`,
+}
+
+export const INTERNAL_ROUTES =
+{
+    //AUTH
+    AUTH_LOGIN: `/${INTERNAL_PATHS.AUTH_DEFAULT}/${INTERNAL_PATHS.AUTH_LOGIN}`,
+    AUTH_PASSWORD: `/${INTERNAL_PATHS.AUTH_DEFAULT}/${INTERNAL_PATHS.AUTH_PASSWORD}`,
+}
