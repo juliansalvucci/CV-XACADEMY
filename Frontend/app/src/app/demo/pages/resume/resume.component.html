@@ -121,6 +121,13 @@
                       >
                         Eliminar
                       </button>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="updateEducation(education)"
+                      >
+                        Editar
+                      </button>
                     </mat-card-content>
                   </mat-card>
                 </div>
@@ -206,6 +213,13 @@
                       >
                         Eliminar
                       </button>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="updateExperience(experience)"
+                      >
+                        Editar
+                      </button>
                     </mat-card-content>
                   </mat-card>
                 </div>
@@ -284,6 +298,13 @@
                       >
                         Eliminar
                       </button>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="updateProject(project)"
+                      >
+                        Editar
+                      </button>
                     </mat-card-content>
                   </mat-card>
                 </div>
@@ -301,17 +322,21 @@
                 <mat-panel-title> Competencias </mat-panel-title>
               </mat-expansion-panel-header>
               <div class="subform">
-              <form [formGroup]="skillForm">
-                <mat-form-field>
-                  <mat-label>Habilidad</mat-label>
-                  <input matInput formControlName="skillName" />
-                </mat-form-field>
-                <br />
-                <button mat-raised-button color="primary" (click)="addSkill()">
-                  Agregar habilidad
-                </button>
-              </form>
-            </div>
+                <form [formGroup]="skillForm">
+                  <mat-form-field>
+                    <mat-label>Habilidad</mat-label>
+                    <input matInput formControlName="skillName" />
+                  </mat-form-field>
+                  <br />
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="addSkill()"
+                  >
+                    Agregar habilidad
+                  </button>
+                </form>
+              </div>
               <div>
                 <div *ngFor="let skill of dataresumecontainerService.skillList">
                   <br />
@@ -324,6 +349,13 @@
                         (click)="deleteSkill(skill)"
                       >
                         Eliminar
+                      </button>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="updateSkill(skill)"
+                      >
+                        Editar
                       </button>
                     </mat-card-content>
                   </mat-card>

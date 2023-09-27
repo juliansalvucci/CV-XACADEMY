@@ -81,6 +81,18 @@ export class ResumeComponent {
     this.dataresumecontainerService.educationList.push(
       this.educationForm.value as IEducation
     );
+    this.educationForm.reset();
+  }
+
+  updateEducation(education: IEducation) {
+    this.educationForm.patchValue({
+      institution: education.institution,
+      degree: education.degree,
+      startDate: education.startDate,
+      endDate: education.endDate,
+      description: education.description,
+    });
+    this.deleteEducation(education);
   }
 
   deleteEducation(education: IEducation) {
@@ -94,6 +106,18 @@ export class ResumeComponent {
     this.dataresumecontainerService.experienceList.push(
       this.experienceForm.value as IExperience
     );
+    this.experienceForm.reset();
+  }
+
+  updateExperience(experience: IExperience) {
+    this.experienceForm.patchValue({
+      jobTitle: experience.jobTitle,
+      company: experience.company,
+      startDate: experience.startDate,
+      endDate: experience.endDate,
+      description: experience.description,
+    });
+    this.deleteExperience(experience);
   }
 
   deleteExperience(experience: IExperience) {
@@ -107,6 +131,17 @@ export class ResumeComponent {
     this.dataresumecontainerService.projectList.push(
       this.projectForm.value as IProject
     );
+    this.projectForm.reset();
+  }
+
+  updateProject(project: IProject) {
+    this.projectForm.patchValue({
+      projectName: project.projectName,
+      description: project.description,
+      startDate: project.startDate,
+      endDate: project.endDate,
+    });
+    this.deleteProject(project);
   }
 
   deleteProject(project: IProject) {
@@ -118,6 +153,14 @@ export class ResumeComponent {
     this.dataresumecontainerService.skillList.push(
       this.skillForm.value as ISkill
     );
+    this.skillForm.reset();
+  }
+
+  updateSkill(skill: ISkill) {
+    this.skillForm.patchValue({
+      skillName: skill.skillName,
+    });
+    this.deleteSkill(skill);
   }
 
   deleteSkill(skill: ISkill) {
