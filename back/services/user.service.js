@@ -1,8 +1,9 @@
 const userModel = require('../models').User
+const { Resume } = require('../models')
 
 const getUser = async(userId) => {
     try {
-        const user = await userModel.findByPk(userId);
+        const user = await userModel.findByPk(userId, { include: { all: true } });
         return user
     } catch(error) {
         console.error('Could not get user!', error);

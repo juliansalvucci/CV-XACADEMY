@@ -3,12 +3,18 @@ const router = express.Router();
 const { resumeController, expController, educationController, projectController, skillController } = require('../controllers');
 const { jwtValidMDW } = require('../middleware/auth-mdw');
 
+// Test
+router.get( '/test', jwtValidMDW, async (req, res) => {
+    console.log(req.user);
+    res.json(req.user)
+})
+
 // Rutas para resume
 router.get( '/', jwtValidMDW, resumeController.getAllResumes ); // Obtiene todos los cvs.
-router.get( '/:resumeId', resumeController.getResume ); // Obtiene solo un cv por 'id'.
-router.post( '/', resumeController.createResume ); // Crea un cv.
-router.put( '/:resumeId', resumeController.updateResume ); // Actualiza un cv por id.
-router.delete( '/:resumeId', resumeController.deleteResume );
+router.get( '/:resumeId', jwtValidMDW, resumeController.getResume ); // Obtiene solo un cv por 'id'.
+router.post( '/', jwtValidMDW, resumeController.createResume ); // Crea un cv.
+router.put( '/:resumeId', jwtValidMDW, resumeController.updateResume ); // Actualiza un cv por id.
+router.delete( '/:resumeId', jwtValidMDW, resumeController.deleteResume );
 
 // Rutas para resume -> Experience
 router.get( '/:resumeId/experience', expController.getAllExp );
