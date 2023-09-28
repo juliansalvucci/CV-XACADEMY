@@ -1,4 +1,5 @@
 const resumeModel = require('../models').Resume;
+const userModel = require('../models').User;
 const { Experience, Education, Project, Skill } = require('../models');
 
 const getAllResumes = async() => {
@@ -26,10 +27,21 @@ const getResume = async(resumeId) => {
     }
 };
 
-const createResume = async(resume) => {
+const createResume = async(resume, userEmail) => {
     try {
-        const newresume = await resumeModel.create(resume);
-        return newresume;
+        const userFound = await userModel.findAll(
+            {
+                where: {
+                    email: userEmail.user
+                }
+            }    
+        );
+        if(userFound.length !== 0) {
+            const newResume = await resumeModel.create({...resume, userId: userFound[0].id});
+            return newResume;
+        } else {
+            throw new error('Could not find user!');
+        }
     } catch(error) {
         console.error('Could not create a new resume', error);
         throw error;
