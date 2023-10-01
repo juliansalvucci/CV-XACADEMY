@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require('express');
 const { initializeDb } = require('./config/db');
-const { resumeRoutes } = require('./routes');
+const { resumeRoutes, authRoutes, userRoutes } = require('./routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,6 +15,8 @@ app.use(express.json());
 
 // Rutas
 app.use('/resume', resumeRoutes);
+app.use('/login', authRoutes);
+app.use('/user', userRoutes);
 
 app.listen(port, async () => {
     await initializeDb();

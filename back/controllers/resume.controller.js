@@ -1,4 +1,4 @@
-const { resumeService } = require('../services');
+const { resumeService, userService } = require('../services');
 
 const getAllResumes = async(req, res) => {
     try {
@@ -30,7 +30,8 @@ const getResume = async(req, res) => {
 
 const createResume = async(req, res) => {
     try {
-        const resumeToCreate = await resumeService.createResume(req.body);
+        const userEmail = req.user;
+        const resumeToCreate = await resumeService.createResume(req.body, userEmail);
         res.json(resumeToCreate);
     } catch(error) {
         res.status(500).json({ action: 'createResume', error: error.message });

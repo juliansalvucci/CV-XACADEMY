@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       Resume.hasMany(models.Education, {
         foreignKey: 'resumeId'
       });
+      Resume.belongsTo(models.User, {
+        foreignKey: 'id',
+        targetKey: 'id'
+      });
     }
   }
   Resume.init({
@@ -31,7 +35,8 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     contactEmail: DataTypes.STRING,
     contactPhone: DataTypes.INTEGER,
-    photoUrl: DataTypes.STRING
+    photoUrl: DataTypes.STRING,
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Resume',
