@@ -19,13 +19,13 @@ export class ResumeComponent {
     private fb: FormBuilder,
     private service: curriculumService,
     public dataresumecontainerService: DataresumecontainerService
-  ) {}
+  ) { }
 
   resumeForm = this.fb.group({
-    firstName: [''],
-    lastName: [''],
+    firstName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
+    lastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     contactEmail: ['', [Validators.email]],
-    contactPhone: ['', [Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+    contactPhone: ['', [Validators.pattern('^[0-9]+$')]],
     photoUrl: [''],
     experiences: this.fb.array([]), // Debes definir esto para representar la lista de experiencias.
     projects: this.fb.array([]), // Debes definir esto para representar la lista de proyectos.
