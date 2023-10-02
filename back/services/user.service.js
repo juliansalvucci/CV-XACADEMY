@@ -1,5 +1,5 @@
 const userModel = require('../models').User
-const { Resume } = require('../models')
+const bcrypt = require('bcrypt');
 
 const getUser = async(userId) => {
     try {
@@ -13,7 +13,8 @@ const getUser = async(userId) => {
 
 const createUser = async(userBody) => {
     try {
-        const newUser = await userModel.create(userBody);
+        const hashPassword = await bcrypt.hash(userBody.password, 12);
+        const newUser = await userModel.create({...userBody, password: hashPassword});
         return newUser;
     } catch(error) {
         console.error('Could not create a new user!', error);
@@ -23,16 +24,18 @@ const createUser = async(userBody) => {
 
 const validateUser = async(options) => {
     try {
-        const user = await userModel.findAll({
+        const user = await userModel.findOne({
             where: {
                 email: options.user,
-                password: options.password
             }
         });
-        if(user.length !== 0) {
-            return user;
+        const validPassword = await bcrypt.compare(options.password, user.password); 
+        if(!validPassword) {
+            return false;
+        } else {
+            console.log(`Valid password! ${options.password} == ${user.password}`);
         }
-        return false;
+        return user;
     } catch(error) {
         console.error('Error when fetching user', error);
         throw error;

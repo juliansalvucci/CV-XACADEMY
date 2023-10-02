@@ -1,6 +1,7 @@
 
 const { userService } = require('../services');
 
+
 const getUser = async (req, res) => {
     try {
         const user = await userService.getUser(req.params.userId);
