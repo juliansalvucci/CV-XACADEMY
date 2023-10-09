@@ -19,7 +19,12 @@ const getAllResumes = async() => {
 
 const getResume = async(resumeId) => {
     try {
-        const resume = await resumeModel.findByPk(resumeId);
+        const resume = await resumeModel.findByPk(resumeId, { include: [
+            { model: Experience },
+            { model: Education },
+            { model: Project },
+            { model: Skill }
+        ]});
         return resume;
     } catch(error) {
         console.error('Could not find resume!', error);
