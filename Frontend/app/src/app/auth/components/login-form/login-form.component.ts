@@ -24,7 +24,7 @@ export class LoginFormComponent {
     const login: ILogin = this.formLogin.value as ILogin
     console.log(login)
     if (login.userName && login.password) { //Si existen entonces hago el post.
-      //this.authService.login(login);
+      this.authService.login(login);
     }
   }
 }

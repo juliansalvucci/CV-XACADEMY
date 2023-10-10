@@ -2,7 +2,7 @@ import { environment as ENV } from '../enviroments/enviroment';
 
 export const API_ROUTES = {
   AUTH: {
-    LOGIN: `${ENV.apiUrl}`,
+    LOGIN: `${ENV.apiUrl}/login/`,
     REGISTER: `${ENV.apiUrl}`,
   },
 
