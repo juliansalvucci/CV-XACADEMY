@@ -21,9 +21,6 @@ module.exports = {
       contactPhone: {
         type: Sequelize.INTEGER
       },
-      photoUrl: {
-        type: Sequelize.STRING
-      },
       userId: {
         type: Sequelize.INTEGER,
         references: {
