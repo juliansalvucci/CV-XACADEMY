@@ -4,7 +4,7 @@ Documentación de la app desarrollada por el equipo 18 de Santex Academy para la
 
 ## Descripción del proyecto
 
-La Resume Builder App es una aplicación que permite a los usuarios crear y diseñar fácilmente sus currículums vitae en formato PDF. A través de una interfaz intuitiva y amigable, los usuarios podrán ingresar su información personal, experiencia laboral, educación, habilidades y proyectos destacados. La aplicación se encargará de recopilar estos datos y generar automáticamente un currículum vitae listo para descargar y presentar a futuros empleadores.
+La Resume Builder App es una aplicación que permite a los usuarios crear y diseñar fácilmente sus currículums vitae. A través de una interfaz intuitiva y amigable, los usuarios podrán ingresar su información personal, experiencia laboral, educación, habilidades y proyectos destacados. La aplicación se encargará de recopilar estos datos y generar automáticamente un currículum vitae.
 
 ## Equipo 18 de Santex Academy
 
@@ -27,8 +27,6 @@ Nuestros mentores en el equipo son:
 
 - **Ingreso de Datos:** Los usuarios podrán ingresar su información personal, experiencia laboral, educación, habilidades y proyectos directamente en la aplicación.
 
-- **Generación de PDF:** Una vez que los usuarios completen su currículum, podrán generar un PDF descargable con un diseño profesional basado en los datos ingresados.
-
 - **Vista Previa:** La aplicación permitirá a los usuarios obtener una vista previa del currículum antes de generarlo en formato PDF, para asegurarse de que la información esté correcta y el diseño sea adecuado.
 
 ## Tecnologías utilizadas
@@ -38,8 +36,6 @@ Nuestros mentores en el equipo son:
 - **Frontend:** El frontend se desarrollará utilizando Angular y CSS para crear una interfaz de usuario atractiva y receptiva.
 
 - **Base de Datos:** Utilizaremos una base de datos relacional como MySQL para almacenar los datos de los usuarios y los currículums generados.
-
-- **Generación de PDF:** Emplearemos una biblioteca de generación de PDF, como PDFKit o Puppeteer, para crear los currículums en formato PDF a partir de los datos ingresados.
 
 ## Instalación y Configuración
 

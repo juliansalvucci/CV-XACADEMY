@@ -26,12 +26,15 @@ const validateUser = async(options) => {
     try {
         const user = await userModel.findOne({
             where: {
-                email: options.user,
+                user: options.user,
             }
         });
+        if(!user) {
+            return;
+        }
         const validPassword = await bcrypt.compare(options.password, user.password); 
         if(!validPassword) {
-            return false;
+            return;
         } else {
             console.log(`Valid password! ${options.password} == ${user.password}`);
         }
