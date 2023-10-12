@@ -32,12 +32,12 @@ const getResume = async(resumeId) => {
     }
 };
 
-const createResume = async(resume, userEmail) => {
+const createResume = async(resume, userName) => {
     try {
         const userFound = await userModel.findAll(
             {
                 where: {
-                    email: userEmail.user
+                    user: userName.user
                 }
             }    
         );
@@ -62,7 +62,6 @@ const updateResume = async(resumeBodyUpdated, resumeId) => {
                 lastName: resumeBodyUpdated.lastName,
                 contactEmail: resumeBodyUpdated.contactEmail,
                 contactPhone: resumeBodyUpdated.contactPhone,
-                photoUrl: resumeBodyUpdated.photoUrl
             });
             await resumeToUpdate.save();
         }

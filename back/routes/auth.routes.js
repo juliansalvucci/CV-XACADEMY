@@ -9,7 +9,7 @@ router.post( '/', async (req, res) => {
     const userFound = await userService.validateUser({ user, password });
     if(userFound) {
         const token = jwt.sign({ user }, SERVER_SECRET, {
-            expiresIn: '10m',
+            expiresIn: '50m',
         });
         return res.json({ token });
     }
