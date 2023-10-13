@@ -9,21 +9,19 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-
   public hide = true;
 
-  constructor(private authService: AuthService,
-    private fb: FormBuilder) { }
+  constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   formLogin = this.fb.group({
-    email: ["", [Validators.required]],
-    password: ["", [Validators.required]]
+    user: ['', [Validators.required]],
+    password: ['', [Validators.required]],
   });
 
   login() {
-    const login: ILogin = this.formLogin.value as ILogin
-    console.log(login)
-    if (login.email && login.password) { //Si existen entonces hago el post.
+    const login: ILogin = this.formLogin.value as ILogin;
+    if (login.user != '' && login.password != '') {
+      //Si existen entonces hago el post.
       this.authService.login(login);
     }
   }

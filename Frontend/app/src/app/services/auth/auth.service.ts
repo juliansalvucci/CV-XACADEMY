@@ -24,19 +24,22 @@ export class AuthService {
   ) {}
 
   login(login: ILogin) {
+    console.log(login);
     const requestOptions: Object = {
       responseType: 'text',
     };
     return this.http
-      .post<string>(API_ROUTES.AUTH.LOGIN, login, requestOptions).subscribe(()=>{
-        console.log("TROLO", login)
-
-      })
-      /*
+      .post<string>(API_ROUTES.AUTH.LOGIN, login, requestOptions)
+      .subscribe((r) => {
+        this.cookieService.set('token', r);
+        this.cookieService.set('userName', login.user);
+        this.setSesion(r);
+      });
+    /*
       .pipe(
         map((r: string) => {
           this.cookieService.set('token', r);
-          this.cookieService.set('userName', login.userName);
+          this.cookieService.set('userName', login.user);
           this.setSesion(r);
         })
       );
