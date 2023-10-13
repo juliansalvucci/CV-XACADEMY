@@ -30,8 +30,8 @@ const getResume = async(req, res) => {
 
 const createResume = async(req, res) => {
     try {
-        const userEmail = req.user;
-        const resumeToCreate = await resumeService.createResume(req.body, userEmail);
+        const userName = req.user;
+        const resumeToCreate = await resumeService.createResume(req.body, userName);
         res.json(resumeToCreate);
     } catch(error) {
         res.status(500).json({ action: 'createResume', error: error.message });
