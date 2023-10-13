@@ -45,4 +45,19 @@ const validateUser = async(options) => {
     }
 };
 
-module.exports = { getUser, createUser, validateUser };
+const getUserId = async(options) => {
+    try {
+        const user = await userModel.findOne({
+            where: {
+                user: options.user,
+            }
+        });
+        if(!user) return;
+        return user.id;
+    } catch(error) {
+        console.error('Could not get user id!', error);
+        throw error;
+    }
+}
+
+module.exports = { getUser, createUser, validateUser, getUserId };
