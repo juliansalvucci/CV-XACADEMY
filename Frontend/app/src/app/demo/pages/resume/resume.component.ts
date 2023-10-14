@@ -185,18 +185,16 @@ export class ResumeComponent {
   }
 
   saveResume() {
-    this.resumeForm.value.educations?.push(
-      this.dataresumecontainerService.educationList
-    );
-    this.resumeForm.value.experiences?.push(
-      this.dataresumecontainerService.experienceList
-    );
-    this.resumeForm.value.projects?.push(
-      this.dataresumecontainerService.projectList
-    );
-    this.resumeForm.value.skills?.push(
-      this.dataresumecontainerService.skillList
-    );
+    this.resumeForm.value.educations =
+      this.dataresumecontainerService.educationList;
+
+    this.resumeForm.value.experiences =
+      this.dataresumecontainerService.experienceList;
+
+    this.resumeForm.value.projects =
+      this.dataresumecontainerService.projectList;
+
+    this.resumeForm.value.skills = this.dataresumecontainerService.skillList;
 
     console.log(this.resumeForm.value);
 
