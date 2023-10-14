@@ -6,6 +6,7 @@ import { IEducation } from 'src/app/interfaces/IEducation';
 import { IExperience } from 'src/app/interfaces/IExperience';
 import { IProject } from 'src/app/interfaces/IProject';
 import { ISkill } from 'src/app/interfaces/ISkill';
+import { IResume } from 'src/app/interfaces/IResume';
 
 @Component({
   selector: 'app-resume',
@@ -17,16 +18,16 @@ export class ResumeComponent {
 
   constructor(
     private fb: FormBuilder,
-    private service: curriculumService,
+    private resumeService: curriculumService,
     public dataresumecontainerService: DataresumecontainerService
   ) { }
 
   resumeForm = this.fb.group({
+    userId: [1],
     firstName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     lastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     contactEmail: ['', [Validators.email]],
     contactPhone: ['', [Validators.pattern('^[0-9]+$')]],
-    photoUrl: [''],
     experiences: this.fb.array([]), // Debes definir esto para representar la lista de experiencias.
     projects: this.fb.array([]), // Debes definir esto para representar la lista de proyectos.
     skills: this.fb.array([]), // Debes definir esto para representar la lista de habilidades.
@@ -183,5 +184,9 @@ export class ResumeComponent {
     );
 
     console.log(this.resumeForm.value);
+
+    this.resumeService.alta(this.resumeForm.value).subscribe((r)=>{
+      console.log('test', r)
+    })
   }
 }

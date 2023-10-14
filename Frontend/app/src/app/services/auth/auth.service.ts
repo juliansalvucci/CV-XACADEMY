@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { API_ROUTES } from 'src/app/routes/api.routes';
 import { INTERNAL_ROUTES } from 'src/app/routes/internal.routes';
 import { ILogin } from 'src/app/interfaces/ILogin';
+import { ISession } from 'src/app/interfaces/ISession';
 
 const helper = new JwtHelperService();
 
@@ -31,19 +31,11 @@ export class AuthService {
     return this.http
       .post<string>(API_ROUTES.AUTH.LOGIN, login, requestOptions)
       .subscribe((r) => {
-        this.cookieService.set('token', r);
-        this.cookieService.set('userName', login.user);
-        this.setSesion(r);
+        const responseObject = JSON.parse(r) as ISession;
+        this.cookieService.set('token', responseObject.token);
+        this.cookieService.set('userId', responseObject.userId.toString());
+        this.setSesion(responseObject.token);
       });
-    /*
-      .pipe(
-        map((r: string) => {
-          this.cookieService.set('token', r);
-          this.cookieService.set('userName', login.user);
-          this.setSesion(r);
-        })
-      );
-      */
   }
 
   private setSesion(authResult: string) {

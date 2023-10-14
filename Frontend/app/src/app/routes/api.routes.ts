@@ -7,7 +7,7 @@ export const API_ROUTES = {
   },
 
   CURRICULUM: {
-    ALTA: `${ENV.apiUrl}createCv`,
+    ALTA: `${ENV.apiUrl}/resume/`,
     BAJA: `${ENV.apiUrl}deleteCv/`,
     MODIFICACION: `${ENV.apiUrl}updateCv/`,
     CONSULTA: `${ENV.apiUrl}getAllCvs`,
