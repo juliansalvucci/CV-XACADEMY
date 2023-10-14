@@ -6,7 +6,7 @@ import { IEducation } from 'src/app/interfaces/IEducation';
 import { IExperience } from 'src/app/interfaces/IExperience';
 import { IProject } from 'src/app/interfaces/IProject';
 import { ISkill } from 'src/app/interfaces/ISkill';
-import { IResume } from 'src/app/interfaces/IResume';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-resume',
@@ -15,15 +15,30 @@ import { IResume } from 'src/app/interfaces/IResume';
 })
 export class ResumeComponent {
   panelOpenState = false;
+  userId = parseInt(this.cookieService.get('userId'));
 
   constructor(
     private fb: FormBuilder,
+    private cookieService: CookieService,
     private resumeService: curriculumService,
     public dataresumecontainerService: DataresumecontainerService
-  ) { }
+  ) {}
+
+  ngOnDestroy() {
+    this.resumeForm.reset();
+    this.educationForm.reset();
+    this.experienceForm.reset();
+    this.projectForm.reset();
+    this.skillForm.reset();
+
+    this.dataresumecontainerService.educationList = [];
+    this.dataresumecontainerService.experienceList = [];
+    this.dataresumecontainerService.projectList = [];
+    this.dataresumecontainerService.skillList = [];
+  }
 
   resumeForm = this.fb.group({
-    userId: [1],
+    userId: [this.userId],
     firstName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     lastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     contactEmail: ['', [Validators.email]],
@@ -185,8 +200,8 @@ export class ResumeComponent {
 
     console.log(this.resumeForm.value);
 
-    this.resumeService.alta(this.resumeForm.value).subscribe((r)=>{
-      console.log('test', r)
-    })
+    this.resumeService.alta(this.resumeForm.value).subscribe((r) => {
+      console.log('test', r);
+    });
   }
 }

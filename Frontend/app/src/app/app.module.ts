@@ -6,6 +6,8 @@ import { SharedModule } from 'src/shared/shared/shared.module';
 import { ResumeComponent } from './demo/pages/resume/resume.component';
 import { PreviewComponent } from './demo/components/preview/preview.component';
 import { HomeComponent } from './demo/pages/home/home.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/TokenInterceptor';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,13 @@ import { HomeComponent } from './demo/pages/home/home.component';
     PreviewComponent,
   ],
   imports: [AppRoutingModule, AppLayoutModule, SharedModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
