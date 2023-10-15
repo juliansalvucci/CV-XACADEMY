@@ -202,23 +202,38 @@ export class ResumeComponent {
 
     console.log(this.resumeForm.value);
 
-    this.resumeService.alta(this.resumeForm.value).subscribe((r) => {
-      console.log('test', r);
+    this.resumeService.alta(this.resumeForm.value).subscribe(() => {
+      /*
       this.resumeForm.value.educations?.map((education) => {
-        console.log('skill', education);
-      });
-      this.resumeForm.value.experiences?.map((experience) => {
-        console.log('skill', experience);
-      });
-      this.resumeForm.value.projects?.map((project) => {
-        console.log('skill', project);
-      });
-      this.resumeForm.value.skills?.map((skill) => {
-        return this.http.post<ISkill>(
-          `${ENV.apiUrl}/resume/${this.resumeId}/skill`,
-          skill
+        return this.http.post<IEducation>(
+          `${ENV.apiUrl}/resume/${this.resumeId}/education`,
+          education
         );
       });
+      this.resumeForm.value.experiences?.map((experience) => {
+        return this.http.post<IExperience>(
+          `${ENV.apiUrl}/resume/${this.resumeId}/experience`,
+          experience
+        );
+      });
+      this.resumeForm.value.projects?.map((project) => {
+        return this.http.post<IProject>(
+          `${ENV.apiUrl}/resume/${this.resumeId}/project`,
+          project
+        );
+      });
+      */
+      this.saveSkills();
+    });
+  }
+
+  saveSkills() {
+    this.resumeForm.value.skills?.map((skill) => {
+      console.log(skill, `${ENV.apiUrl}/resume/${this.resumeId}/skill`);
+      return this.http.post<ISkill>(
+        `${ENV.apiUrl}/resume/${this.resumeId}/skill`,
+        skill
+      );
     });
   }
 }
