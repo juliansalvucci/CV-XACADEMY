@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IEducation } from 'src/app/interfaces/IEducation';
 import { IExperience } from 'src/app/interfaces/IExperience';
 import { IProject } from 'src/app/interfaces/IProject';
+import { IResume } from 'src/app/interfaces/IResume';
 import { ISkill } from 'src/app/interfaces/ISkill';
 
 @Injectable({
@@ -13,9 +14,9 @@ export class DataresumecontainerService {
     lastName: '',
     contactEmail: '',
     contactPhone: '',
-    photoUrl: '',
   };
 
+  resumeEdit!: IResume;
   educationList: IEducation[] = [];
   experienceList: IExperience[] = [];
   projectList: IProject[] = [];

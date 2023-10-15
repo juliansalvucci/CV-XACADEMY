@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user/user.service';
+import { environment as ENV } from 'src/app/enviroments/enviroment';
+import { HttpClient } from '@angular/common/http';
+import { DataresumecontainerService } from 'src/app/services/dataresumecontainer/dataresumecontainer.service';
+import { IResume } from 'src/app/interfaces/IResume';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +15,40 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private userService: UserService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userService: UserService,
+    private dataresumecontainerService: DataresumecontainerService,
+    public _MatPaginatorIntl: MatPaginatorIntl
+  ) {}
 
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'edit', 'delete'];
 
   dataSource = new MatTableDataSource<any>([]);
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   ngOnInit(): void {
+    this._MatPaginatorIntl.itemsPerPageLabel = 'items por página';
     this.loadAllResumes();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  configTable() {
+    this.dataSource.sort = this.sort!;
+    this.dataSource.paginator = this.paginator!;
   }
 
   private loadAllResumes() {
     this.userService.findAllResumes().subscribe((res) => {
       this.dataSource = new MatTableDataSource<any>(res);
+      this.configTable();
     });
   }
 
@@ -28,5 +56,24 @@ export class HomeComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) this.dataSource.paginator.firstPage();
+  }
+
+  deleteResume(resumeId: number) {
+    this.http
+      .delete<number>(`${ENV.apiUrl}/resume/${resumeId}`)
+      .subscribe(() => {
+        console.log('CURRICULUM ELIMINADO CON ÉXITO');
+        this.loadAllResumes();
+      });
+  }
+
+  editResume(resumeId: number) {
+    this.http
+      .get<IResume>(`${ENV.apiUrl}/resume/${resumeId}`)
+      .subscribe((res) => {
+        this.dataresumecontainerService.resumeEdit = res;
+        console.log('res', this.dataresumecontainerService.resumeEdit);
+        this.router.navigateByUrl('/app/resumes');
+      });
   }
 }

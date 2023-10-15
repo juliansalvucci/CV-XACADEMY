@@ -23,6 +23,6 @@ export const API_ROUTES = {
   },
 
   USER: {
-    CONSULTAPORID: `${ENV.apiUrl}getUser/`,
+    CONSULTAPORID: `${ENV.apiUrl}/getUser/`,
   },
 };

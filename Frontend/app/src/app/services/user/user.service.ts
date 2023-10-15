@@ -10,11 +10,11 @@ import { API_ROUTES } from 'src/app/routes/api.routes';
 export class UserService {
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
-  URL = API_ROUTES.USER;
+  URL = API_ROUTES.CURRICULUM;
 
   findAllResumes(): Observable<any> {
     const userId = this.cookieService.get('userId');
     if (!userId) return of([]);
-    return this.http.get(this.URL.CONSULTAPORID + userId);
+    return this.http.get(this.URL.CONSULTA);
   }
 }

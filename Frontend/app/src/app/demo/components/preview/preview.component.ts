@@ -27,7 +27,6 @@ export class PreviewComponent {
   lastName = '';
   contactEmail = '';
   contactPhone = '';
-  photoUrl = '';
 
   educationList: IEducation[] = [];
   experienceList: IExperience[] = [];
@@ -42,8 +41,7 @@ export class PreviewComponent {
       this.lastName = this.dataresumecontainerService.resume.lastName;
       this.contactEmail = this.dataresumecontainerService.resume.contactEmail;
       this.contactPhone = this.dataresumecontainerService.resume.contactPhone;
-      this.photoUrl = this.dataresumecontainerService.resume.photoUrl;
-
+      
       this.educationList = this.dataresumecontainerService.educationList;
       this.experienceList = this.dataresumecontainerService.experienceList;
       this.projectList = this.dataresumecontainerService.projectList;

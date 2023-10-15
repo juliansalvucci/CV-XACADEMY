@@ -9,18 +9,7 @@
       <p class="m-0">Télefono: {{contactPhone}}</p>
     </div>
     <br>
-    <!--
 
-    
-    <div class="d-flex py-2 flex-column px-3">
-      <p class="text-muted py-1 m-0">Formación:</p>
-      <p class="m-0">Institución</p>
-      <p class="m-0">Formación</p>
-      <p class="m-0">Fecha de inicio</p>
-      <p class="m-0">Fecha de finalización</p>
-      <p class="m-0">Descripción</p>
-    </div>
-    -->
     <div>
       <h4 *ngIf="educationList.length > 0">Formación</h4>
       <div *ngFor="let education of educationList">

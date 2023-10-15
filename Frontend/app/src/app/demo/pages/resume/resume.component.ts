@@ -28,6 +28,14 @@ export class ResumeComponent {
     public dataresumecontainerService: DataresumecontainerService
   ) {}
 
+  ngOnInit() {
+    if (this.dataresumecontainerService.resumeEdit != null) {
+      console.log('NO MAMES');
+      this.populateResume();
+      this.writeResume();
+    }
+  }
+
   ngOnDestroy() {
     this.resumeForm.reset();
     this.educationForm.reset();
@@ -84,6 +92,16 @@ export class ResumeComponent {
     resumeId: [this.resumeId],
   });
 
+  populateResume() {
+    this.resumeForm.patchValue({
+      userId: this.dataresumecontainerService.resumeEdit.userId,
+      firstName: this.dataresumecontainerService.resumeEdit.firstName,
+      lastName: this.dataresumecontainerService.resumeEdit.lastName,
+      contactEmail: this.dataresumecontainerService.resumeEdit.contactEmail,
+      contactPhone: this.dataresumecontainerService.resumeEdit.contactPhone,
+    });
+  }
+
   writeResume() {
     this.dataresumecontainerService.resume.firstName =
       this.resumeForm.get('firstName')?.value || '';
@@ -93,8 +111,6 @@ export class ResumeComponent {
       this.resumeForm.get('contactEmail')?.value || '';
     this.dataresumecontainerService.resume.contactPhone =
       this.resumeForm.get('contactPhone')?.value || '';
-    this.dataresumecontainerService.resume.photoUrl =
-      this.resumeForm.get('photoUrl')?.value || '';
   }
 
   addEducation() {
