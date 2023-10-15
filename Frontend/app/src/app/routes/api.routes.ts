@@ -10,7 +10,7 @@ export const API_ROUTES = {
     ALTA: `${ENV.apiUrl}/resume/`,
     BAJA: `${ENV.apiUrl}deleteCv/`,
     MODIFICACION: `${ENV.apiUrl}updateCv/`,
-    CONSULTA: `${ENV.apiUrl}getAllCvs`,
+    CONSULTA: `${ENV.apiUrl}/resume/`,
     CONSULTAPORID: `${ENV.apiUrl}getCv/`,
   },
 
@@ -22,4 +22,3 @@ export const API_ROUTES = {
     CONSULTAPORID: `${ENV.apiUrl}getCv/`,
   },
 };
-
