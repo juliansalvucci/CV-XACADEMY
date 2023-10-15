@@ -34,6 +34,10 @@ export class AuthService {
         const responseObject = JSON.parse(r) as ISession;
         this.cookieService.set('token', responseObject.token);
         this.cookieService.set('userId', responseObject.userId.toString());
+        this.cookieService.set(
+          'lastResumeId',
+          responseObject.lastResumeId.toString()
+        );
         this.router.navigateByUrl('/app/home');
         this.setSesion(responseObject.token);
       });

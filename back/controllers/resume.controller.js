@@ -64,4 +64,17 @@ const deleteResume = async(req, res) => {
     }
 }
 
-module.exports = { getAllResumes, getResume, createResume, updateResume, deleteResume };
+const getMaxResumeIdByUserId = async(req, res) => {
+    try {
+        const resume = await resumeService.getMaxResumeIdByUserId(req.params.userId); // Le pasamos el 'id' que pedimos en el router.
+        if(!resume) {
+            res.status(404).json({ action: 'getResume', error: `Resume with id ${req.params.resumeId} does not exist!`});
+        } else {
+            res.json(resume);
+        }
+    } catch(error) {
+        res.status(500).json({ action: 'getResume', error: error.message });
+    }
+}
+
+module.exports = { getAllResumes, getResume, createResume, updateResume, deleteResume, getMaxResumeIdByUserId };

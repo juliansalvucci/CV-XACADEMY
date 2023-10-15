@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ResumeComponent {
   panelOpenState = false;
   userId = parseInt(this.cookieService.get('userId'));
+  resumeId = parseInt(this.cookieService.get('lastResumeId')) + 1;
 
   constructor(
     private fb: FormBuilder,
@@ -55,7 +56,7 @@ export class ResumeComponent {
     startDate: [''],
     endDate: [''],
     description: [''],
-    resumeId: [0],
+    resumeId: [this.resumeId],
   });
 
   experienceForm = this.fb.group({
@@ -64,7 +65,7 @@ export class ResumeComponent {
     startDate: [''],
     endDate: [''],
     description: [''],
-    resumeId: [0],
+    resumeId: [this.resumeId],
   });
 
   projectForm = this.fb.group({
@@ -72,12 +73,12 @@ export class ResumeComponent {
     description: [''],
     startDate: [''],
     endDate: [''],
-    resumeId: [0],
+    resumeId: [this.resumeId],
   });
 
   skillForm = this.fb.group({
     skillName: [''],
-    resumeId: [0],
+    resumeId: [this.resumeId],
   });
 
   writeResume() {

@@ -1,4 +1,5 @@
 export interface ISession{
     token: string,
-    userId: number
+    userId: number,
+    lastResumeId: number
 }
