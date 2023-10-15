@@ -1,1 +1,54 @@
-<p>home page!</p>
+<div class="layout-list">
+  <h1 class="h3">Mis Curriculums</h1>
+
+  <div class="py-3 search">
+    <input
+      type="text"
+      class="input-search shadow-sm"
+      (keyup)="applyFilter($event)"
+      placeholder="Buscador"
+      #input
+    />
+    <div class="btn-search">
+      <mat-icon>search</mat-icon>
+    </div>
+  </div>
+
+  <div>
+    <p class="h6 py-2 text-muted">Listado de curriculums.</p>
+    <table mat-table class="shadow-sm" [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="text-secondary fw-normal"
+        >
+          Identificador del curriculum
+        </th>
+        <td mat-cell *matCellDef="let row" class="w-25">{{ row.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="text-secondary fw-normal"
+        >
+          Nombre del curriculum
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.Resumes.firstName }} {{ row.Resumes.lastName }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="2" class="p-3">
+          <span>No hay información para mostrar</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

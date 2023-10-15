@@ -21,4 +21,8 @@ export const API_ROUTES = {
     CONSULTA: `${ENV.apiUrl}getAllCvs`,
     CONSULTAPORID: `${ENV.apiUrl}getCv/`,
   },
+
+  USER: {
+    CONSULTAPORID: `${ENV.apiUrl}getUser/`,
+  },
 };
