@@ -1,268 +1,434 @@
 <div class="layout-resume">
   <div class="layout-form">
     <h1 class="h3">Curriculum Vitae</h1>
-    <div class="py-4">
-      <div>
-        <form [formGroup]="resumeForm">
-          <div class="d-flex flex-column mb-4">
-            <h1 class="h5 fw-normal pb-2">Datos personales</h1>
-            <mat-form-field>
-              <mat-label>Nombres</mat-label>
-              <input matInput formControlName="firstName" (keyup)="writeResume()" />
-            </mat-form-field>
-
-            <mat-error class="text-danger"
-              *ngIf="resumeForm.get('firstName')?.invalid && resumeForm.get('firstName')?.touched">
-              <strong>El campo no admite caracteres numéricos.</strong>
+    <div class="w-100">
+      <form [formGroup]="resumeForm" class="py-4 d-flex flex-column gap-2">
+        <span class="h5 fw-normal">Datos personales</span>
+        <div class="d-flex flex-column">
+          <mat-form-field>
+            <mat-label>Nombres</mat-label>
+            <input
+              matInput
+              formControlName="firstName"
+              (keyup)="writeResume()"
+            />
+            <mat-error
+              class="text-danger"
+              *ngIf="
+                resumeForm.get('firstName')?.invalid &&
+                resumeForm.get('firstName')?.touched
+              "
+            >
+              <strong class="small"
+                >El campo no admite caracteres numéricos.</strong
+              >
             </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="d-flex flex-column">
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input
+              matInput
+              formControlName="lastName"
+              (keyup)="writeResume()"
+            />
 
-            <mat-form-field>
-              <mat-label>Apellidos</mat-label>
-              <input matInput formControlName="lastName" (keyup)="writeResume()" />
-            </mat-form-field>
-
-            <mat-error class="text-danger"
-              *ngIf="resumeForm.get('lastName')?.invalid && resumeForm.get('lastName')?.touched">
-              <strong>El campo no admite caracteres numéricos.</strong>
+            <mat-error
+              class="text-danger"
+              *ngIf="
+                resumeForm.get('lastName')?.invalid &&
+                resumeForm.get('lastName')?.touched
+              "
+            >
+              <strong class="small"
+                >El campo no admite caracteres numéricos.</strong
+              >
             </mat-error>
-
-            <mat-form-field>
-              <mat-label>Correo electrónico</mat-label>
-              <input matInput formControlName="contactEmail" (keyup)="writeResume()" />
-            </mat-form-field>
-
-            <mat-error class="text-danger"
-              *ngIf="resumeForm.get('contactEmail')?.invalid && resumeForm.get('contactEmail')?.touched">
-              <strong>El dato es incorrecto.</strong>
+          </mat-form-field>
+        </div>
+        <div class="d-flex flex-column">
+          <mat-form-field>
+            <mat-label>Correo electrónico</mat-label>
+            <input
+              matInput
+              formControlName="contactEmail"
+              (keyup)="writeResume()"
+            />
+            <mat-error
+              class="text-danger"
+              *ngIf="
+                resumeForm.get('contactEmail')?.invalid &&
+                resumeForm.get('contactEmail')?.touched
+              "
+            >
+              <strong class="small">El dato es incorrecto.</strong>
             </mat-error>
-
-            <mat-form-field>
-              <mat-label>Teléfono</mat-label>
-              <input matInput formControlName="contactPhone" (keyup)="writeResume()" />
-            </mat-form-field>
-
-            <mat-error class="text-danger"
-              *ngIf="resumeForm.get('contactPhone')?.invalid && resumeForm.get('contactPhone')?.touched">
-              <strong>El campo no admite caracteres alfanuméricos.</strong>
+          </mat-form-field>
+        </div>
+        <div class="d-flex flex-column">
+          <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input
+              matInput
+              formControlName="contactPhone"
+              (keyup)="writeResume()"
+            />
+            <mat-error
+              class="text-danger"
+              *ngIf="
+                resumeForm.get('contactPhone')?.invalid &&
+                resumeForm.get('contactPhone')?.touched
+              "
+            >
+              <strong class="small"
+                >El campo no admite caracteres alfanuméricos.</strong
+              >
             </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+
+    <div class="w-100 py-3">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Formación </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="educationForm" class="w-100">
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Institución</mat-label>
+                <input matInput formControlName="institution" />
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Formación</mat-label>
+                <input matInput formControlName="degree" />
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Fecha de inicio</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerInicioFormacion"
+                  formControlName="startDate"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="pickerInicioFormacion"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicioFormacion></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Fecha de finalización</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerFinFormacion"
+                  formControlName="endDate"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="pickerFinFormacion"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerFinFormacion></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+              </mat-form-field>
+            </div>
+            <button class="btn btn-primary w-100" (click)="addEducation()">
+              GUARDAR FORMACIÓN ACADÉMICA
+            </button>
+          </form>
+          <div
+            *ngFor="let education of dataresumecontainerService.educationList"
+            class="flex flex-column w-100"
+          >
+            <br />
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-end gap-3 align-items-center"
+              >
+                <mat-icon
+                  (click)="updateEducation(education)"
+                  style="cursor: pointer"
+                  >edit</mat-icon
+                >
+                <mat-icon
+                  (click)="deleteEducation(education)"
+                  style="cursor: pointer"
+                  >close</mat-icon
+                >
+              </div>
+              <div class="card-body">
+                <p>Institución: {{ education.institution }}</p>
+                <p>Formación: {{ education.degree }}</p>
+                <p>
+                  Fecha de inicio:
+                  {{ education.startDate | date : "dd/MM/yyyy" }}
+                </p>
+                <p>
+                  Fecha de finalización:
+                  {{ education.endDate | date : "dd/MM/yyyy" }}
+                </p>
+                <p>Descripción: {{ education.description }}</p>
+              </div>
+            </div>
           </div>
-        </form>
-        <div class="d-flex flex-column mb-4">
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title> Formación </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="subform">
-                <form [formGroup]="educationForm">
-                  <mat-form-field>
-                    <mat-label>Institución</mat-label>
-                    <input matInput formControlName="institution" />
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Formación</mat-label>
-                    <input matInput formControlName="degree" />
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Fecha de inicio</mat-label>
-                    <input matInput [matDatepicker]="pickerInicioFormacion" formControlName="startDate" />
-                    <mat-datepicker-toggle matIconSuffix [for]="pickerInicioFormacion"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerInicioFormacion></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Fecha de finalización</mat-label>
-                    <input matInput [matDatepicker]="pickerFinFormacion" formControlName="endDate" />
-                    <mat-datepicker-toggle matIconSuffix [for]="pickerFinFormacion"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerFinFormacion></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Descripción</mat-label>
-                    <textarea matInput formControlName="description"></textarea>
-                  </mat-form-field>
-                  <br />
-                  <button mat-raised-button color="primary" (click)="addEducation()">
-                    Agregar formación
-                  </button>
-                </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="w-100 py-3">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Experiencia </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="experienceForm" class="w-100">
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Puesto</mat-label>
+                <input matInput formControlName="jobTitle" />
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Empleador</mat-label>
+                <input matInput formControlName="company" />
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Fecha de inicio</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerInicioExp"
+                  formControlName="startDate"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="pickerInicioExp"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicioExp></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Fecha de finalización</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerFinExp"
+                  formControlName="endDate"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="pickerFinExp"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerFinExp></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+              </mat-form-field>
+            </div>
+            <button class="btn btn-primary w-100" (click)="addExperience()">
+              GUARDAR EXPERIENCIA LABORAL
+            </button>
+          </form>
+          <div
+            *ngFor="let experience of dataresumecontainerService.experienceList"
+            class="flex flex-column w-100"
+          >
+            <br />
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-end gap-3 align-items-center"
+              >
+                <mat-icon
+                  (click)="updateExperience(experience)"
+                  style="cursor: pointer"
+                  >edit</mat-icon
+                >
+                <mat-icon
+                  (click)="deleteExperience(experience)"
+                  style="cursor: pointer"
+                  >close</mat-icon
+                >
               </div>
-              <div>
-                <div *ngFor="
-                    let education of dataresumecontainerService.educationList
-                  ">
-                  <br />
-                  <mat-card>
-                    <mat-card-content>
-                      <h4>{{ education.institution }}</h4>
-                      <p>Formación: {{ education.degree }}</p>
-                      <p>Descripción: {{ education.description }}</p>
-                      <button mat-raised-button color="primary" (click)="deleteEducation(education)">
-                        Eliminar
-                      </button>
-                      <button mat-raised-button color="primary" class="btnEditar" (click)="updateEducation(education)">
-                        Editar
-                      </button>
-                    </mat-card-content>
-                  </mat-card>
-                </div>
+              <div class="card-body">
+                <p>Puesto: {{ experience.jobTitle }}</p>
+                <p>Empleador: {{ experience.company }}</p>
+                <p>
+                  Fecha de inicio:
+                  {{ experience.startDate | date : "dd/MM/yyyy" }}
+                </p>
+                <p>
+                  Fecha de finalización:
+                  {{ experience.endDate | date : "dd/MM/yyyy" }}
+                </p>
+                <p>Descripción: {{ experience.description }}</p>
               </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-        <div class="d-flex flex-column mb-4">
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title> Experiencia </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="subform">
-                <form [formGroup]="experienceForm">
-                  <mat-form-field>
-                    <mat-label>Puesto</mat-label>
-                    <input matInput formControlName="jobTitle" />
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Empleador</mat-label>
-                    <input matInput formControlName="company" />
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Fecha de inicio</mat-label>
-                    <input matInput [matDatepicker]="pickerInicioExp" formControlName="startDate" />
-                    <mat-datepicker-toggle matIconSuffix [for]="pickerInicioExp"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerInicioExp></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Fecha de finalización</mat-label>
-                    <input matInput [matDatepicker]="pickerFinExp" formControlName="endDate" />
-                    <mat-datepicker-toggle matIconSuffix [for]="pickerFinExp"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerFinExp></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Descripción</mat-label>
-                    <textarea matInput formControlName="description"></textarea>
-                  </mat-form-field>
-                  <br />
-                  <button mat-raised-button color="primary" (click)="addExperience()">
-                    Agregar experiencia
-                  </button>
-                </form>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="w-100 py-3">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Proyectos </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="projectForm" class="w-100">
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Nombre de proyecto</mat-label>
+                <input matInput formControlName="projectName" />
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Fecha de inicio</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerInicioProyecto"
+                  formControlName="startDate"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="pickerInicioProyecto"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicioProyecto></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Fecha de finalización</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="pickerFinProyecto"
+                  formControlName="endDate"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="pickerFinProyecto"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerFinProyecto></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+              </mat-form-field>
+            </div>
+            <button class="btn btn-primary w-100" (click)="addProject()">
+              GUARDAR PROYECTOS
+            </button>
+          </form>
+          <div
+            *ngFor="let project of dataresumecontainerService.projectList"
+            class="flex flex-column w-100"
+          >
+            <br />
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-end gap-3 align-items-center"
+              >
+                <mat-icon
+                  (click)="updateProject(project)"
+                  style="cursor: pointer"
+                  >edit</mat-icon
+                >
+                <mat-icon
+                  (click)="deleteProject(project)"
+                  style="cursor: pointer"
+                  >close</mat-icon
+                >
               </div>
-              <div>
-                <div *ngFor="
-                    let experience of dataresumecontainerService.experienceList
-                  ">
-                  <br />
-                  <mat-card>
-                    <mat-card-content>
-                      <h4>{{ experience.jobTitle }}</h4>
-                      <p>Empleador: {{ experience.company }}</p>
-                      <p>Descripción: {{ experience.description }}</p>
-                      <button mat-raised-button color="primary" (click)="deleteExperience(experience)">
-                        Eliminar
-                      </button>
-                      <button mat-raised-button color="primary" class="btnEditar"
-                        (click)="updateExperience(experience)">
-                        Editar
-                      </button>
-                    </mat-card-content>
-                  </mat-card>
-                </div>
+              <div class="card-body">
+                <p>Nombre del proyecto: {{ project.projectName }}</p>
+                <p>
+                  Fecha de inicio:
+                  {{ project.startDate | date : "dd/MM/yyyy" }}
+                </p>
+                <p>
+                  Fecha de finalización:
+                  {{ project.endDate | date : "dd/MM/yyyy" }}
+                </p>
+                <p>Descripción: {{ project.description }}</p>
               </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-        <div class="d-flex flex-column mb-4">
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title> Proyectos </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="subform">
-                <form [formGroup]="projectForm">
-                  <mat-form-field>
-                    <mat-label>Nombre de proyecto</mat-label>
-                    <input matInput formControlName="projectName" />
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Fecha de inicio</mat-label>
-                    <input matInput [matDatepicker]="pickerInicioProyecto" formControlName="startDate" />
-                    <mat-datepicker-toggle matIconSuffix [for]="pickerInicioProyecto"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerInicioProyecto></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Fecha de finalización</mat-label>
-                    <input matInput [matDatepicker]="pickerFinProyecto" formControlName="endDate" />
-                    <mat-datepicker-toggle matIconSuffix [for]="pickerFinProyecto"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerFinProyecto></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label>Descripción</mat-label>
-                    <textarea matInput formControlName="description"></textarea>
-                  </mat-form-field>
-                  <br />
-                  <button mat-raised-button color="primary" (click)="addProject()">
-                    Agregar proyecto
-                  </button>
-                </form>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="w-100 py-3">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Competencias </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="skillForm" class="w-100">
+            <div class="d-flex flex-column">
+              <mat-form-field>
+                <mat-label>Habilidad</mat-label>
+                <input matInput formControlName="skillName" />
+              </mat-form-field>
+            </div>
+            <button class="btn btn-primary w-100" (click)="addSkill()">
+              GUARDAR COMPETENCIAS
+            </button>
+          </form>
+          <div
+            *ngFor="let skill of dataresumecontainerService.skillList"
+            class="flex flex-column w-100"
+          >
+            <br />
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-end gap-3 align-items-center"
+              >
+                <mat-icon (click)="updateSkill(skill)" style="cursor: pointer"
+                  >edit</mat-icon
+                >
+                <mat-icon (click)="deleteSkill(skill)" style="cursor: pointer"
+                  >close</mat-icon
+                >
               </div>
-              <div>
-                <div *ngFor="let project of dataresumecontainerService.projectList">
-                  <br />
-                  <mat-card>
-                    <mat-card-content>
-                      <h4>{{ project.projectName }}</h4>
-                      <p>Descripción: {{ project.description }}</p>
-                      <button mat-raised-button color="primary" (click)="deleteProject(project)">
-                        Eliminar
-                      </button>
-                      <button mat-raised-button color="primary" class="btnEditar" (click)="updateProject(project)">
-                        Editar
-                      </button>
-                    </mat-card-content>
-                  </mat-card>
-                </div>
+              <div class="card-body">
+                <p>{{ skill.skillName }}</p>
               </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-        <div class="d-flex flex-column mb-4">
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title> Competencias </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="subform">
-                <form [formGroup]="skillForm">
-                  <mat-form-field>
-                    <mat-label>Habilidad</mat-label>
-                    <input matInput formControlName="skillName" />
-                  </mat-form-field>
-                  <br />
-                  <button mat-raised-button color="primary" (click)="addSkill()">
-                    Agregar habilidad
-                  </button>
-                </form>
-              </div>
-              <div>
-                <div *ngFor="let skill of dataresumecontainerService.skillList">
-                  <br />
-                  <mat-card>
-                    <mat-card-content>
-                      <h4>{{ skill.skillName }}</h4>
-                      <button mat-raised-button color="primary" (click)="deleteSkill(skill)">
-                        Eliminar
-                      </button>
-                      <button mat-raised-button color="primary" class="btnEditar" (click)="updateSkill(skill)">
-                        Editar
-                      </button>
-                    </mat-card-content>
-                  </mat-card>
-                  <br />
-                </div>
-              </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-      </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
   <div class="layout-preview">
