@@ -200,40 +200,60 @@ export class ResumeComponent {
 
     this.resumeForm.value.skills = this.dataresumecontainerService.skillList;
 
-    console.log(this.resumeForm.value);
-
     this.resumeService.alta(this.resumeForm.value).subscribe(() => {
-      /*
       this.resumeForm.value.educations?.map((education) => {
-        return this.http.post<IEducation>(
-          `${ENV.apiUrl}/resume/${this.resumeId}/education`,
-          education
-        );
+        this.saveEducations(education as IEducation);
       });
       this.resumeForm.value.experiences?.map((experience) => {
-        return this.http.post<IExperience>(
-          `${ENV.apiUrl}/resume/${this.resumeId}/experience`,
-          experience
-        );
+        this.saveExperiences(experience as IExperience);
       });
       this.resumeForm.value.projects?.map((project) => {
-        return this.http.post<IProject>(
-          `${ENV.apiUrl}/resume/${this.resumeId}/project`,
-          project
-        );
+        this.saveProjects(project as IProject);
       });
-      */
-      this.saveSkills();
+      this.resumeForm.value.skills?.map((skill) => {
+        this.saveSkill(skill as ISkill);
+      });
     });
   }
 
-  saveSkills() {
-    this.resumeForm.value.skills?.map((skill) => {
-      console.log(skill, `${ENV.apiUrl}/resume/${this.resumeId}/skill`);
-      return this.http.post<ISkill>(
-        `${ENV.apiUrl}/resume/${this.resumeId}/skill`,
-        skill
-      );
-    });
+  saveEducations(education: IEducation) {
+    this.http
+      .post<IEducation>(
+        `${ENV.apiUrl}/resume/${this.resumeId}/education`,
+        education
+      )
+      .subscribe(() => {
+        console.log('EDUCACIÓN REGISTRADA CON ÉXITO');
+      });
+  }
+
+  saveExperiences(experience: IExperience) {
+    this.http
+      .post<IEducation>(
+        `${ENV.apiUrl}/resume/${this.resumeId}/experience`,
+        experience
+      )
+      .subscribe(() => {
+        console.log('EXPERIENCIA REGISTRADA CON ÉXITO');
+      });
+  }
+
+  saveProjects(project: IProject) {
+    this.http
+      .post<IEducation>(
+        `${ENV.apiUrl}/resume/${this.resumeId}/project`,
+        project
+      )
+      .subscribe(() => {
+        console.log('PROYECTO REGISTRADO CON ÉXITO');
+      });
+  }
+
+  saveSkill(skill: ISkill) {
+    this.http
+      .post<ISkill>(`${ENV.apiUrl}/resume/${this.resumeId}/skill`, skill)
+      .subscribe(() => {
+        console.log('HABILIDAD REGISTRADA CON ÉXITO');
+      });
   }
 }
