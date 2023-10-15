@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ResumeComponent {
   panelOpenState = false;
+  editar = false;
   userId = parseInt(this.cookieService.get('userId'));
   resumeId = parseInt(this.cookieService.get('lastResumeId')) + 1;
 
@@ -30,7 +31,7 @@ export class ResumeComponent {
 
   ngOnInit() {
     if (this.dataresumecontainerService.resumeEdit != null) {
-      console.log('NO MAMES');
+      this.editar = true;
       this.populateResume();
       this.writeResume();
     }
@@ -50,6 +51,7 @@ export class ResumeComponent {
   }
 
   resumeForm = this.fb.group({
+    id: [0],
     userId: [this.userId],
     firstName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     lastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
@@ -94,15 +96,26 @@ export class ResumeComponent {
 
   populateResume() {
     this.resumeForm.patchValue({
+      id: this.dataresumecontainerService.resumeEdit.id,
       userId: this.dataresumecontainerService.resumeEdit.userId,
       firstName: this.dataresumecontainerService.resumeEdit.firstName,
       lastName: this.dataresumecontainerService.resumeEdit.lastName,
       contactEmail: this.dataresumecontainerService.resumeEdit.contactEmail,
       contactPhone: this.dataresumecontainerService.resumeEdit.contactPhone,
     });
+    this.resumeId = this.dataresumecontainerService.resumeEdit.id
+    this.dataresumecontainerService.educationList =
+      this.dataresumecontainerService.resumeEdit.Education;
+    this.dataresumecontainerService.experienceList =
+      this.dataresumecontainerService.resumeEdit.Experiences;
+    this.dataresumecontainerService.projectList =
+      this.dataresumecontainerService.resumeEdit.Projects;
+    this.dataresumecontainerService.skillList =
+      this.dataresumecontainerService.resumeEdit.Skills;
   }
 
   writeResume() {
+    //Método para escribir en la preview
     this.dataresumecontainerService.resume.firstName =
       this.resumeForm.get('firstName')?.value || '';
     this.dataresumecontainerService.resume.lastName =
@@ -202,6 +215,34 @@ export class ResumeComponent {
   deleteSkill(skill: ISkill) {
     this.dataresumecontainerService.skillList =
       this.dataresumecontainerService.skillList.filter((e) => e != skill);
+  }
+
+  updateResume(){
+    this.resumeForm.value.educations =
+      this.dataresumecontainerService.educationList;
+
+    this.resumeForm.value.experiences =
+      this.dataresumecontainerService.experienceList;
+
+    this.resumeForm.value.projects =
+      this.dataresumecontainerService.projectList;
+
+    this.resumeForm.value.skills = this.dataresumecontainerService.skillList;
+
+    this.resumeService.modificacion(this.resumeForm.value).subscribe(() => {
+      this.resumeForm.value.educations?.map((education) => {
+        this.saveEducations(education as IEducation);
+      });
+      this.resumeForm.value.experiences?.map((experience) => {
+        this.saveExperiences(experience as IExperience);
+      });
+      this.resumeForm.value.projects?.map((project) => {
+        this.saveProjects(project as IProject);
+      });
+      this.resumeForm.value.skills?.map((skill) => {
+        this.saveSkill(skill as ISkill);
+      });
+    });
   }
 
   saveResume() {
