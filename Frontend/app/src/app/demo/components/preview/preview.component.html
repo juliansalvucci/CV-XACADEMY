@@ -1,5 +1,5 @@
 <div class="layout-preview bg-body-secondary">
-  <div class="h-100 bg-white shadow-sm p-2">
+  <div class="h-100 bg-white shadow-sm p-2 overflow-y-auto">
     <div class="h3 p-3">Curriculum Vitae</div>
     <div class="d-flex py-2 flex-column px-3">
       <p class="text-muted py-1 m-0">Datos personales:</p>
@@ -8,78 +8,75 @@
       <p class="m-0">Correo electrónico: {{ contactEmail }}</p>
       <p class="m-0">Télefono: {{ contactPhone }}</p>
     </div>
-    <br />
-    <div>
-      <h4 *ngIf="educationList.length > 0">Formación</h4>
+    <div class="d-flex py-2 flex-column px-3">
+      <p class="text-muted py-1 m-0" *ngIf="educationList.length > 0">
+        Formación:
+      </p>
       <div *ngFor="let education of educationList">
-        <br />
-        <mat-card>
-          <mat-card-content>
-            <p>Institución:{{ education.institution }}</p>
-            <p>Formación: {{ education.degree }}</p>
-            <p>
-              Fecha de inicio: {{ education.startDate | date : "dd/MM/yyyy" }}
-            </p>
-            <p>
-              Fecha de finalización:
-              {{ education.endDate | date : "dd/MM/yyyy" }}
-            </p>
-            <p>Formación: {{ education.degree }}</p>
-            <p>Descripción: {{ education.description }}</p>
-          </mat-card-content>
-        </mat-card>
+        <div class="d-flex py-2 flex-column m-0 p-0">
+          <p class="m-0">Institución:{{ education.institution }}</p>
+          <p class="m-0">Formación: {{ education.degree }}</p>
+          <p class="m-0">
+            Fecha de inicio: {{ education.startDate | date : "dd/MM/yyyy" }}
+          </p>
+          <p class="m-0">
+            Fecha de finalización:
+            {{ education.endDate | date : "dd/MM/yyyy" }}
+          </p>
+          <p class="m-0">Descripción: {{ education.description }}</p>
+          <mat-divider></mat-divider>
+        </div>
       </div>
     </div>
-    <br />
-    <div>
-      <h4 *ngIf="experienceList.length > 0">Experiencias</h4>
+
+    <div class="d-flex py-2 flex-column px-3">
+      <p class="text-muted py-1 m-0" *ngIf="experienceList.length > 0">
+        Experiencias:
+      </p>
       <div *ngFor="let experience of experienceList">
-        <br />
-        <mat-card>
-          <mat-card-content>
-            <p>Nombre: {{ experience.jobTitle }}</p>
-            <p>Empleador: {{ experience.company }}</p>
-            <p>
-              Fecha de inicio: {{ experience.startDate | date : "dd/MM/yyyy" }}
-            </p>
-            <p>
-              Fecha de finalización:
-              {{ experience.endDate | date : "dd/MM/yyyy" }}
-            </p>
-            <p>Descripción: {{ experience.description }}</p>
-          </mat-card-content>
-        </mat-card>
+        <div class="d-flex py-2 flex-column m-0 p-0">
+          <p class="m-0">Nombre: {{ experience.jobTitle }}</p>
+          <p class="m-0">Empleador: {{ experience.company }}</p>
+          <p class="m-0">
+            Fecha de inicio: {{ experience.startDate | date : "dd/MM/yyyy" }}
+          </p>
+          <p class="m-0">
+            Fecha de finalización:
+            {{ experience.endDate | date : "dd/MM/yyyy" }}
+          </p>
+          <p class="m-0">Descripción: {{ experience.description }}</p>
+          <mat-divider></mat-divider>
+        </div>
       </div>
     </div>
-    <br />
-    <div>
-      <h4 *ngIf="projectList.length > 0">Proyectos</h4>
+
+    <div class="d-flex py-2 flex-column px-3">
+      <p class="text-muted py-1 m-0" *ngIf="projectList.length > 0">
+        Proyectos:
+      </p>
       <div *ngFor="let project of projectList">
-        <br />
-        <mat-card>
-          <mat-card-content>
-            <p>Nombre: {{ project.projectName }}</p>
-            <p>
-              Fecha de inicio: {{ project.startDate | date : "dd/MM/yyyy" }}
-            </p>
-            <p>
-              Fecha de finalización: {{ project.endDate | date : "dd/MM/yyyy" }}
-            </p>
-            <p>Descripción: {{ project.description }}</p>
-          </mat-card-content>
-        </mat-card>
+        <div class="d-flex py-2 flex-column m-0 p-0">
+          <p class="m-0">Nombre: {{ project.projectName }}</p>
+          <p class="m-0">
+            Fecha de inicio: {{ project.startDate | date : "dd/MM/yyyy" }}
+          </p>
+          <p class="m-0">
+            Fecha de finalización: {{ project.endDate | date : "dd/MM/yyyy" }}
+          </p>
+          <p class="m-0">Descripción: {{ project.description }}</p>
+          <mat-divider></mat-divider>
+        </div>
       </div>
     </div>
-    <div>
-      <h4 *ngIf="skillList.length > 0">Competencias</h4>
+
+    <div class="d-flex py-2 flex-column px-3">
+      <p class="text-muted py-1 m-0" *ngIf="skillList.length > 0">
+        Competencias:
+      </p>
       <div *ngFor="let skill of skillList">
-        <br />
-        <mat-card>
-          <mat-card-content>
-            <p>Nombre: {{ skill.skillName }}</p>
-          </mat-card-content>
-        </mat-card>
-        <br />
+        <div class="d-flex py-2 flex-column m-0 p-0">
+          <mat-chip class="bg-light">{{ skill.skillName }}</mat-chip>
+        </div>
       </div>
     </div>
   </div>
