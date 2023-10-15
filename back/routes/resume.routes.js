@@ -56,7 +56,7 @@ router.delete("/:resumeId/project/:projectId", projectController.deleteProject);
 // Rutas para resume -> Skill
 router.get("/:resumeId/skill", skillController.getAllSkills);
 router.get("/:resumeId/skill/:skillId", skillController.getSkill);
-router.post("/:resumeId/skill", skillController.createSkill);
+router.post("/:resumeId/skill", jwtValidMDW ,skillController.createSkill);
 router.put("/:resumeId/skill/:skillId", skillController.updateSkill);
 router.delete("/:resumeId/skill/:skillId", skillController.deleteSkill);
 

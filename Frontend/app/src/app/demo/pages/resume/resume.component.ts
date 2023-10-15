@@ -7,6 +7,8 @@ import { IExperience } from 'src/app/interfaces/IExperience';
 import { IProject } from 'src/app/interfaces/IProject';
 import { ISkill } from 'src/app/interfaces/ISkill';
 import { CookieService } from 'ngx-cookie-service';
+import { environment as ENV } from 'src/app/enviroments/enviroment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-resume',
@@ -20,6 +22,7 @@ export class ResumeComponent {
 
   constructor(
     private fb: FormBuilder,
+    private http: HttpClient,
     private cookieService: CookieService,
     private resumeService: curriculumService,
     public dataresumecontainerService: DataresumecontainerService
@@ -201,6 +204,21 @@ export class ResumeComponent {
 
     this.resumeService.alta(this.resumeForm.value).subscribe((r) => {
       console.log('test', r);
+      this.resumeForm.value.educations?.map((education) => {
+        console.log('skill', education);
+      });
+      this.resumeForm.value.experiences?.map((experience) => {
+        console.log('skill', experience);
+      });
+      this.resumeForm.value.projects?.map((project) => {
+        console.log('skill', project);
+      });
+      this.resumeForm.value.skills?.map((skill) => {
+        return this.http.post<ISkill>(
+          `${ENV.apiUrl}/resume/${this.resumeId}/skill`,
+          skill
+        );
+      });
     });
   }
 }
