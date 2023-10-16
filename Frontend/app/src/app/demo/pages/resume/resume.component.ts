@@ -154,27 +154,34 @@ export class ResumeComponent {
       endDate: education.endDate,
       description: education.description,
     });
-    this.deleteEducation(education);
+    this.deleteEducation(education, false);
   }
 
-  deleteEducation(education: IEducation) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¿Deseas eliminar esta educación?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Eliminar',
-      confirmButtonColor: '#3085d6',
-      cancelButtonText: 'Cancelar',
-      cancelButtonColor: '#d33',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.dataresumecontainerService.educationList =
-          this.dataresumecontainerService.educationList.filter(
-            (e) => e != education
-          );
-      }
-    });
+  deleteEducation(education: IEducation, showConfirmation: boolean = true) {
+    if (showConfirmation) {
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas eliminar esta educación?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Cancelar',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataresumecontainerService.educationList =
+            this.dataresumecontainerService.educationList.filter(
+              (e) => e != education
+            );
+        }
+      });
+    } else {
+      this.dataresumecontainerService.educationList =
+        this.dataresumecontainerService.educationList.filter(
+          (e) => e != education
+        );
+    }
   }
 
   addExperience() {
@@ -205,27 +212,34 @@ export class ResumeComponent {
       endDate: experience.endDate,
       description: experience.description,
     });
-    this.deleteExperience(experience);
+    this.deleteExperience(experience, false);
   }
 
-  deleteExperience(experience: IExperience) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¿Deseas eliminar esta experiencia?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Eliminar',
-      confirmButtonColor: '#3085d6',
-      cancelButtonText: 'Cancelar',
-      cancelButtonColor: '#d33',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.dataresumecontainerService.experienceList =
-          this.dataresumecontainerService.experienceList.filter(
-            (e) => e != experience
-          );
-      }
-    });
+  deleteExperience(experience: IExperience, showConfirmation: boolean = true) {
+    if (showConfirmation) {
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas eliminar esta experiencia?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Cancelar',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataresumecontainerService.experienceList =
+            this.dataresumecontainerService.experienceList.filter(
+              (e) => e != experience
+            );
+        }
+      });
+    } else {
+      this.dataresumecontainerService.experienceList =
+        this.dataresumecontainerService.experienceList.filter(
+          (e) => e != experience
+        );
+    }
   }
 
   addProject() {
@@ -255,27 +269,32 @@ export class ResumeComponent {
       startDate: project.startDate,
       endDate: project.endDate,
     });
-    this.deleteProject(project);
+    this.deleteProject(project, false);
   }
 
-  deleteProject(project: IProject) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¿Deseas eliminar este proyecto?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Eliminar',
-      confirmButtonColor: '#3085d6',
-      cancelButtonText: 'Cancelar',
-      cancelButtonColor: '#d33',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.dataresumecontainerService.projectList =
-          this.dataresumecontainerService.projectList.filter(
-            (e) => e != project
-          );
-      }
-    });
+  deleteProject(project: IProject, showConfirmation: boolean = true) {
+    if (showConfirmation) {
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas eliminar este proyecto?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Cancelar',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataresumecontainerService.projectList =
+            this.dataresumecontainerService.projectList.filter(
+              (e) => e != project
+            );
+        }
+      });
+    } else {
+      this.dataresumecontainerService.projectList =
+        this.dataresumecontainerService.projectList.filter((e) => e != project);
+    }
   }
 
   addSkill() {
@@ -302,25 +321,30 @@ export class ResumeComponent {
     this.skillForm.patchValue({
       skillName: skill.skillName,
     });
-    this.deleteSkill(skill);
+    this.deleteSkill(skill, false);
   }
 
-  deleteSkill(skill: ISkill) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¿Deseas eliminar esta habilidad?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Eliminar',
-      confirmButtonColor: '#3085d6',
-      cancelButtonText: 'Cancelar',
-      cancelButtonColor: '#d33',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.dataresumecontainerService.skillList =
-          this.dataresumecontainerService.skillList.filter((e) => e != skill);
-      }
-    });
+  deleteSkill(skill: ISkill, showConfirmation: boolean = true) {
+    if (showConfirmation) {
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas eliminar esta habilidad?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Cancelar',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataresumecontainerService.skillList =
+            this.dataresumecontainerService.skillList.filter((e) => e != skill);
+        }
+      });
+    } else {
+      this.dataresumecontainerService.skillList =
+        this.dataresumecontainerService.skillList.filter((e) => e != skill);
+    }
   }
 
   updateResume() {
