@@ -23,7 +23,7 @@ export class HomeComponent {
     public _MatPaginatorIntl: MatPaginatorIntl
   ) {}
 
-  displayedColumns: string[] = ['id', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'name', 'acciones'];
 
   dataSource = new MatTableDataSource<any>([]);
 

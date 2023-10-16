@@ -53,7 +53,7 @@ export class ResumeComponent {
   resumeForm = this.fb.group({
     id: [0],
     userId: [this.userId],
-    firstName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
+    firstName: ['', [Validators.pattern('^[a-zA-Z ]+$')]],
     lastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     contactEmail: ['', [Validators.email]],
     contactPhone: ['', [Validators.pattern('^[0-9]+$')]],
@@ -103,7 +103,7 @@ export class ResumeComponent {
       contactEmail: this.dataresumecontainerService.resumeEdit.contactEmail,
       contactPhone: this.dataresumecontainerService.resumeEdit.contactPhone,
     });
-    this.resumeId = this.dataresumecontainerService.resumeEdit.id
+    this.resumeId = this.dataresumecontainerService.resumeEdit.id;
     this.dataresumecontainerService.educationList =
       this.dataresumecontainerService.resumeEdit.Education;
     this.dataresumecontainerService.experienceList =
@@ -217,7 +217,7 @@ export class ResumeComponent {
       this.dataresumecontainerService.skillList.filter((e) => e != skill);
   }
 
-  updateResume(){
+  updateResume() {
     this.resumeForm.value.educations =
       this.dataresumecontainerService.educationList;
 

@@ -14,10 +14,7 @@
             />
             <mat-error
               class="text-danger"
-              *ngIf="
-                resumeForm.get('firstName')?.invalid &&
-                resumeForm.get('firstName')?.touched
-              "
+              *ngIf="resumeForm.get('firstName')?.invalid"
             >
               <strong class="small"
                 >El campo no admite caracteres numéricos.</strong
@@ -36,10 +33,7 @@
 
             <mat-error
               class="text-danger"
-              *ngIf="
-                resumeForm.get('lastName')?.invalid &&
-                resumeForm.get('lastName')?.touched
-              "
+              *ngIf="resumeForm.get('lastName')?.invalid"
             >
               <strong class="small"
                 >El campo no admite caracteres numéricos.</strong
@@ -57,10 +51,7 @@
             />
             <mat-error
               class="text-danger"
-              *ngIf="
-                resumeForm.get('contactEmail')?.invalid &&
-                resumeForm.get('contactEmail')?.touched
-              "
+              *ngIf="resumeForm.get('contactEmail')?.invalid"
             >
               <strong class="small">El dato es incorrecto.</strong>
             </mat-error>
@@ -76,13 +67,10 @@
             />
             <mat-error
               class="text-danger"
-              *ngIf="
-                resumeForm.get('contactPhone')?.invalid &&
-                resumeForm.get('contactPhone')?.touched
-              "
+              *ngIf="resumeForm.get('contactPhone')?.invalid"
             >
               <strong class="small"
-                >El campo no admite caracteres alfanuméricos.</strong
+                >El campo no admite caracteres no numéricos.</strong
               >
             </mat-error>
           </mat-form-field>

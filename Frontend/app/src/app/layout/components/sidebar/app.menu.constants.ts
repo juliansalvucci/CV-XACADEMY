@@ -9,9 +9,4 @@ export const MENU_ITEMS = [
     icon: '../../assets/icons/book.svg',
     route: 'resumes',
   },
-  {
-    title: 'Iniciar sesión',
-    icon: '../../assets/icons/user.svg',
-    route: '/auth/login',
-  },
 ];
