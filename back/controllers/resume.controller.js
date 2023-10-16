@@ -57,7 +57,7 @@ const deleteResume = async(req, res) => {
         if(!resumeToDelete) {
             res.status(404).json({ action: 'deleteResume', error: `Resume with id ${req.params.resumeId} does not exist, can't delete a resume that does not exist!` });
         } else {
-            res.json(resumeToDelete);
+            res.status(200).json({ action: 'deleteResume', message: `Resume with id ${req.params.resumeId} was deleted sucessfully!` });
         }
     } catch(error) {
         res.status(500).json({ action: 'updateResume', error: error.message });

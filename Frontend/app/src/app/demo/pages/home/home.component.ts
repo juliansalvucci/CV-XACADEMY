@@ -79,9 +79,9 @@ export class HomeComponent {
               'El curriculum ha sido eliminado.',
               'success'
             );
-            await this.loadAllResumes();
+            this.loadAllResumes();
+            console.log('data', this.dataSource.data);
           });
-        
       }
     });
   }

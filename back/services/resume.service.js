@@ -86,6 +86,7 @@ const deleteResume = async (resumeId) => {
           id: resumeId,
         },
       });
+      return true;
     }
   } catch (error) {
     console.error("Could not delete resume!", error);
