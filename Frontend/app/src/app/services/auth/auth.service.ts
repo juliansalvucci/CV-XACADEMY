@@ -51,6 +51,8 @@ export class AuthService {
   logout() {
     this.loginStatus.next(false);
     this.cookieService.delete('token');
+    this.cookieService.delete('userId');
+    this.cookieService.delete('lastResumeId');
     this.router.navigateByUrl(INTERNAL_ROUTES.AUTH_LOGIN);
   }
 

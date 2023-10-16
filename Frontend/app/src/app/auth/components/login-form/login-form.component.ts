@@ -11,7 +11,9 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class LoginFormComponent {
   public hide = true;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(private authService: AuthService, private fb: FormBuilder) {
+    this.authService.logout();
+  }
 
   formLogin = this.fb.group({
     user: ['', [Validators.required]],
@@ -24,5 +26,9 @@ export class LoginFormComponent {
       //Si existen entonces hago el post.
       this.authService.login(login);
     }
+  }
+
+  logOut() {
+    this.authService.logout();
   }
 }

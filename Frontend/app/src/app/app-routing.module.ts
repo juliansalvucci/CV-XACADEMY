@@ -10,11 +10,11 @@ import { ResumeComponent } from './demo/pages/resume/resume.component';
     RouterModule.forRoot(
       [
         {
-          path: '',
+          path: 'auth',
           loadChildren: () =>
             import('./auth/auth.module').then((m) => m.AuthModule),
         },
-        { path: 'home', redirectTo: 'app/home', pathMatch: 'full' },
+        { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
         {
           path: 'app',
           component: AppLayoutComponent,

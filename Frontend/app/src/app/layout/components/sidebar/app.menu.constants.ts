@@ -9,4 +9,10 @@ export const MENU_ITEMS = [
     icon: '../../assets/icons/book.svg',
     route: 'resumes',
   },
+  {
+    title: 'Cerrar sesión',
+    icon: '../../assets/icons/logout.svg',
+    route: '',
+  },
 ];
+
