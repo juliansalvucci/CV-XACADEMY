@@ -46,7 +46,7 @@ export class HomeComponent {
     this.dataSource.paginator = this.paginator!;
   }
 
-  loadAllResumes() {
+  async loadAllResumes() {
     this.userService.findAllResumes().subscribe((res) => {
       this.dataSource = new MatTableDataSource(res);
       this.configTable();
@@ -73,14 +73,15 @@ export class HomeComponent {
       if (result.isConfirmed) {
         this.http
           .delete<number>(`${ENV.apiUrl}/resume/${resumeId}`)
-          .subscribe(() => {
+          .subscribe(async () => {
             Swal.fire(
               '¡Eliminado!',
               'El curriculum ha sido eliminado.',
               'success'
             );
+            await this.loadAllResumes();
           });
-        this.loadAllResumes();
+        
       }
     });
   }
