@@ -347,6 +347,14 @@ export class ResumeComponent {
     }
   }
 
+  operations() {
+    if (this.editar) {
+      this.updateResume();
+    } else {
+      this.saveResume();
+    }
+  }
+
   updateResume() {
     this.resumeForm.value.educations =
       this.dataresumecontainerService.educationList;
@@ -359,20 +367,22 @@ export class ResumeComponent {
 
     this.resumeForm.value.skills = this.dataresumecontainerService.skillList;
 
-    this.resumeService.modificacion(this.resumeForm.value).subscribe(() => {
-      this.resumeForm.value.educations?.map((education) => {
-        this.saveEducations(education as IEducation);
+    this.resumeService
+      .modificacion(this.resumeForm.value.id, this.resumeForm.value)
+      .subscribe(() => {
+        this.resumeForm.value.educations?.map((education) => {
+          this.saveEducations(education as IEducation);
+        });
+        this.resumeForm.value.experiences?.map((experience) => {
+          this.saveExperiences(experience as IExperience);
+        });
+        this.resumeForm.value.projects?.map((project) => {
+          this.saveProjects(project as IProject);
+        });
+        this.resumeForm.value.skills?.map((skill) => {
+          this.saveSkill(skill as ISkill);
+        });
       });
-      this.resumeForm.value.experiences?.map((experience) => {
-        this.saveExperiences(experience as IExperience);
-      });
-      this.resumeForm.value.projects?.map((project) => {
-        this.saveProjects(project as IProject);
-      });
-      this.resumeForm.value.skills?.map((skill) => {
-        this.saveSkill(skill as ISkill);
-      });
-    });
   }
 
   saveResume() {

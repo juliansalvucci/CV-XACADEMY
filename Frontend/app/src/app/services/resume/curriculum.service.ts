@@ -19,8 +19,8 @@ export class curriculumService {
     return this.http.delete(this.URL.BAJA + id);
   }
 
-  modificacion(data: any): Observable<any> {
-    return this.http.post(this.URL.MODIFICACION, data);
+  modificacion(id: any, data: any): Observable<any> {
+    return this.http.put(`${this.URL.MODIFICACION}/${id}`, data);
   }
 
   consulta(): Observable<any> {
