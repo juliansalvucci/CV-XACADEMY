@@ -9,6 +9,7 @@ import { ISkill } from 'src/app/interfaces/ISkill';
 import { CookieService } from 'ngx-cookie-service';
 import { environment as ENV } from 'src/app/enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-resume',
@@ -57,10 +58,10 @@ export class ResumeComponent {
     lastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
     contactEmail: ['', [Validators.email]],
     contactPhone: ['', [Validators.pattern('^[0-9]+$')]],
-    experiences: this.fb.array([]), // Debes definir esto para representar la lista de experiencias.
-    projects: this.fb.array([]), // Debes definir esto para representar la lista de proyectos.
-    skills: this.fb.array([]), // Debes definir esto para representar la lista de habilidades.
-    educations: this.fb.array([]), // Debes definir esto para representar la lista de educaciones.
+    experiences: this.fb.array([]),
+    projects: this.fb.array([]),
+    skills: this.fb.array([]),
+    educations: this.fb.array([]),
   });
 
   educationForm = this.fb.group({
@@ -115,7 +116,6 @@ export class ResumeComponent {
   }
 
   writeResume() {
-    //Método para escribir en la preview
     this.dataresumecontainerService.resume.firstName =
       this.resumeForm.get('firstName')?.value || '';
     this.dataresumecontainerService.resume.lastName =
@@ -127,10 +127,23 @@ export class ResumeComponent {
   }
 
   addEducation() {
-    this.dataresumecontainerService.educationList.push(
-      this.educationForm.value as IEducation
-    );
-    this.educationForm.reset();
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas agregar esta educación?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Agregar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.educationList.push(
+          this.educationForm.value as IEducation
+        );
+        this.educationForm.reset();
+      }
+    });
   }
 
   updateEducation(education: IEducation) {
@@ -145,17 +158,43 @@ export class ResumeComponent {
   }
 
   deleteEducation(education: IEducation) {
-    this.dataresumecontainerService.educationList =
-      this.dataresumecontainerService.educationList.filter(
-        (e) => e != education
-      );
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas eliminar esta educación?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.educationList =
+          this.dataresumecontainerService.educationList.filter(
+            (e) => e != education
+          );
+      }
+    });
   }
 
   addExperience() {
-    this.dataresumecontainerService.experienceList.push(
-      this.experienceForm.value as IExperience
-    );
-    this.experienceForm.reset();
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas agregar esta experiencia?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Agregar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.experienceList.push(
+          this.experienceForm.value as IExperience
+        );
+        this.experienceForm.reset();
+      }
+    });
   }
 
   updateExperience(experience: IExperience) {
@@ -170,17 +209,43 @@ export class ResumeComponent {
   }
 
   deleteExperience(experience: IExperience) {
-    this.dataresumecontainerService.experienceList =
-      this.dataresumecontainerService.experienceList.filter(
-        (e) => e != experience
-      );
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas eliminar esta experiencia?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.experienceList =
+          this.dataresumecontainerService.experienceList.filter(
+            (e) => e != experience
+          );
+      }
+    });
   }
 
   addProject() {
-    this.dataresumecontainerService.projectList.push(
-      this.projectForm.value as IProject
-    );
-    this.projectForm.reset();
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas agregar este proyecto?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Agregar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.projectList.push(
+          this.projectForm.value as IProject
+        );
+        this.projectForm.reset();
+      }
+    });
   }
 
   updateProject(project: IProject) {
@@ -194,15 +259,43 @@ export class ResumeComponent {
   }
 
   deleteProject(project: IProject) {
-    this.dataresumecontainerService.projectList =
-      this.dataresumecontainerService.projectList.filter((e) => e != project);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas eliminar este proyecto?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.projectList =
+          this.dataresumecontainerService.projectList.filter(
+            (e) => e != project
+          );
+      }
+    });
   }
 
   addSkill() {
-    this.dataresumecontainerService.skillList.push(
-      this.skillForm.value as ISkill
-    );
-    this.skillForm.reset();
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas agregar esta habilidad?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Agregar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.skillList.push(
+          this.skillForm.value as ISkill
+        );
+        this.skillForm.reset();
+      }
+    });
   }
 
   updateSkill(skill: ISkill) {
@@ -213,8 +306,21 @@ export class ResumeComponent {
   }
 
   deleteSkill(skill: ISkill) {
-    this.dataresumecontainerService.skillList =
-      this.dataresumecontainerService.skillList.filter((e) => e != skill);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas eliminar esta habilidad?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataresumecontainerService.skillList =
+          this.dataresumecontainerService.skillList.filter((e) => e != skill);
+      }
+    });
   }
 
   updateResume() {
@@ -257,19 +363,32 @@ export class ResumeComponent {
 
     this.resumeForm.value.skills = this.dataresumecontainerService.skillList;
 
-    this.resumeService.alta(this.resumeForm.value).subscribe(() => {
-      this.resumeForm.value.educations?.map((education) => {
-        this.saveEducations(education as IEducation);
-      });
-      this.resumeForm.value.experiences?.map((experience) => {
-        this.saveExperiences(experience as IExperience);
-      });
-      this.resumeForm.value.projects?.map((project) => {
-        this.saveProjects(project as IProject);
-      });
-      this.resumeForm.value.skills?.map((skill) => {
-        this.saveSkill(skill as ISkill);
-      });
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas guardar este currículum?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Guardar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.resumeService.alta(this.resumeForm.value).subscribe(() => {
+          this.resumeForm.value.educations?.map((education) => {
+            this.saveEducations(education as IEducation);
+          });
+          this.resumeForm.value.experiences?.map((experience) => {
+            this.saveExperiences(experience as IExperience);
+          });
+          this.resumeForm.value.projects?.map((project) => {
+            this.saveProjects(project as IProject);
+          });
+          this.resumeForm.value.skills?.map((skill) => {
+            this.saveSkill(skill as ISkill);
+          });
+        });
+      }
     });
   }
 

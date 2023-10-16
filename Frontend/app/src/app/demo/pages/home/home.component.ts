@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { DataresumecontainerService } from 'src/app/services/dataresumecontainer/dataresumecontainer.service';
 import { IResume } from 'src/app/interfaces/IResume';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -59,12 +60,29 @@ export class HomeComponent {
   }
 
   deleteResume(resumeId: number) {
-    this.http
-      .delete<number>(`${ENV.apiUrl}/resume/${resumeId}`)
-      .subscribe(() => {
-        console.log('CURRICULUM ELIMINADO CON ÉXITO');
-        this.loadAllResumes();
-      });
+    Swal.fire({
+      title: '¿Estás seguro de eliminar este curriculum?',
+      text: 'Esta acción no se puede revertir',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.http
+          .delete<number>(`${ENV.apiUrl}/resume/${resumeId}`)
+          .subscribe(() => {
+            Swal.fire(
+              '¡Eliminado!',
+              'El curriculum ha sido eliminado.',
+              'success'
+            );
+            this.loadAllResumes();
+          });
+      }
+    });
   }
 
   editResume(resumeId: number) {
