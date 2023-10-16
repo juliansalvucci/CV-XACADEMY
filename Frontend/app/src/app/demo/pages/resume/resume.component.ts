@@ -10,6 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment as ENV } from 'src/app/enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { IResume } from 'src/app/interfaces/IResume';
 
 @Component({
   selector: 'app-resume',
@@ -49,6 +50,9 @@ export class ResumeComponent {
     this.dataresumecontainerService.experienceList = [];
     this.dataresumecontainerService.projectList = [];
     this.dataresumecontainerService.skillList = [];
+
+    this.dataresumecontainerService.resumeEdit = this.resumeForm
+      .value as IResume; //Vacío el resume edit para que no vuelva a popular esa data.
   }
 
   resumeForm = this.fb.group({
@@ -367,22 +371,35 @@ export class ResumeComponent {
 
     this.resumeForm.value.skills = this.dataresumecontainerService.skillList;
 
-    this.resumeService
-      .modificacion(this.resumeForm.value.id, this.resumeForm.value)
-      .subscribe(() => {
-        this.resumeForm.value.educations?.map((education) => {
-          this.saveEducations(education as IEducation);
-        });
-        this.resumeForm.value.experiences?.map((experience) => {
-          this.saveExperiences(experience as IExperience);
-        });
-        this.resumeForm.value.projects?.map((project) => {
-          this.saveProjects(project as IProject);
-        });
-        this.resumeForm.value.skills?.map((skill) => {
-          this.saveSkill(skill as ISkill);
-        });
-      });
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas guardar este currículum?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Guardar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.resumeService
+          .modificacion(this.resumeForm.value.id, this.resumeForm.value)
+          .subscribe(() => {
+            this.resumeForm.value.educations?.map((education) => {
+              this.saveEducations(education as IEducation);
+            });
+            this.resumeForm.value.experiences?.map((experience) => {
+              this.saveExperiences(experience as IExperience);
+            });
+            this.resumeForm.value.projects?.map((project) => {
+              this.saveProjects(project as IProject);
+            });
+            this.resumeForm.value.skills?.map((skill) => {
+              this.saveSkill(skill as ISkill);
+            });
+          });
+      }
+    });
   }
 
   saveResume() {
@@ -399,7 +416,7 @@ export class ResumeComponent {
 
     Swal.fire({
       title: '¿Estás seguro?',
-      text: '¿Deseas guardar este currículum?',
+      text: '¿Deseas guardar los cambios?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Guardar',
