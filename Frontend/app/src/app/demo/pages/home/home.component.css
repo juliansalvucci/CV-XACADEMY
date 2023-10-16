@@ -1,3 +1,7 @@
+table {
+  width: 100%;
+}
+
 .layout-list {
   width: 100%;
   max-height: 100vh;
@@ -36,3 +40,4 @@
   cursor: pointer;
   color: #1f53ff;
 }
+

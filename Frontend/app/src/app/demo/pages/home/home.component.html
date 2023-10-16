@@ -39,7 +39,7 @@
           Nombre del curriculum
         </th>
         <td mat-cell *matCellDef="let row">
-          {{ row.firstName }} {{ row.lastName }}
+          {{ row.firstName + " " + row.lastName }}
         </td>
       </ng-container>
       <ng-container matColumnDef="edit">
@@ -57,7 +57,7 @@
             color="primary"
             (click)="editResume(row.id)"
           >
-            Editar
+            <mat-icon>edit</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -71,12 +71,8 @@
           Eliminar
         </th>
         <td mat-cell *matCellDef="let row">
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="deleteResume(row.id)"
-          >
-            Eliminar
+          <button mat-raised-button color="warn" (click)="deleteResume(row.id)">
+            <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>
