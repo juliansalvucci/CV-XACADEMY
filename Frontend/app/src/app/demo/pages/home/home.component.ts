@@ -46,9 +46,9 @@ export class HomeComponent {
     this.dataSource.paginator = this.paginator!;
   }
 
-  private loadAllResumes() {
+  loadAllResumes() {
     this.userService.findAllResumes().subscribe((res) => {
-      this.dataSource = new MatTableDataSource<any>(res);
+      this.dataSource = new MatTableDataSource(res);
       this.configTable();
     });
   }
@@ -79,8 +79,8 @@ export class HomeComponent {
               'El curriculum ha sido eliminado.',
               'success'
             );
-            this.loadAllResumes();
           });
+        this.loadAllResumes();
       }
     });
   }
@@ -90,7 +90,6 @@ export class HomeComponent {
       .get<IResume>(`${ENV.apiUrl}/resume/${resumeId}`)
       .subscribe((res) => {
         this.dataresumecontainerService.resumeEdit = res;
-        console.log('res', this.dataresumecontainerService.resumeEdit);
         this.router.navigateByUrl('/app/resumes');
       });
   }
