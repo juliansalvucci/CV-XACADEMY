@@ -63,6 +63,7 @@ const updateResume = async (resumeBodyUpdated, resumeId) => {
     const resumeToUpdate = await resumeModel.findByPk(resumeId);
     if (resumeToUpdate) {
       resumeToUpdate.set({
+        title: resumeBodyUpdated.title,
         firstName: resumeBodyUpdated.firstName,
         lastName: resumeBodyUpdated.lastName,
         contactEmail: resumeBodyUpdated.contactEmail,

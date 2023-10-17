@@ -37,7 +37,9 @@ export class AuthService {
         this.cookieService.set('userName', login.user);
         this.cookieService.set(
           'lastResumeId',
-          responseObject.lastResumeId.toString()
+          responseObject.lastResumeId !== null
+            ? responseObject.lastResumeId.toString()
+            : '0'
         );
         this.router.navigateByUrl('/app/home');
         this.setSesion(responseObject.token);

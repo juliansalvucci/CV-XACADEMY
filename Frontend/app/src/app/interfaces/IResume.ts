@@ -6,6 +6,7 @@ import { ISkill } from './ISkill';
 export interface IResume {
   id: number;
   userId: number;
+  title: string
   firstName: string;
   lastName: string;
   contactEmail: string;

@@ -1,8 +1,16 @@
 <div class="layout-resume">
   <div class="layout-form">
     <h1 class="h3">Curriculum Vitae</h1>
+
     <div class="w-100">
       <form [formGroup]="resumeForm" class="py-4 d-flex flex-column gap-2">
+        <span class="h5 fw-normal">Título</span>
+        <div class="d-flex flex-column">
+          <mat-form-field>
+            <mat-label>TÍTULO</mat-label>
+            <input matInput formControlName="title" />
+          </mat-form-field>
+        </div>
         <span class="h5 fw-normal">Datos personales</span>
         <div class="d-flex flex-column">
           <mat-form-field>

@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Resume.init({
+    title: DataTypes.STRING,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     contactEmail: DataTypes.STRING,

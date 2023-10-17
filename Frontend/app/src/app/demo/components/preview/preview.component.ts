@@ -41,12 +41,11 @@ export class PreviewComponent {
       this.lastName = this.dataresumecontainerService.resume.lastName;
       this.contactEmail = this.dataresumecontainerService.resume.contactEmail;
       this.contactPhone = this.dataresumecontainerService.resume.contactPhone;
-      
-      this.educationList = this.dataresumecontainerService.educationList;
-      this.experienceList = this.dataresumecontainerService.experienceList;
-      this.projectList = this.dataresumecontainerService.projectList;
-      this.skillList = this.dataresumecontainerService.skillList;
 
+      this.educationList = this.dataresumecontainerService.educationList || [];
+      this.experienceList = this.dataresumecontainerService.experienceList || [];
+      this.projectList = this.dataresumecontainerService.projectList || [];
+      this.skillList = this.dataresumecontainerService.skillList || [];
     });
   }
 

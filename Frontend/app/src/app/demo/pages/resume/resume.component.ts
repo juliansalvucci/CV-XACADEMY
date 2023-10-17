@@ -32,10 +32,12 @@ export class ResumeComponent {
   ) {}
 
   ngOnInit() {
-    if (this.dataresumecontainerService.resumeEdit != null) {
+    if (this.dataresumecontainerService?.resumeEdit?.id != undefined) {
       this.editar = true;
       this.populateResume();
       this.writeResume();
+    } else {
+      this.resumeForm.value.title = `SIN TÍTULO ${this.resumeId}`;
     }
   }
 
@@ -45,23 +47,23 @@ export class ResumeComponent {
     this.experienceForm.reset();
     this.projectForm.reset();
     this.skillForm.reset();
-
+    this.dataresumecontainerService.resumeEdit = this.resumeForm.value as IResume
     this.dataresumecontainerService.educationList = [];
     this.dataresumecontainerService.experienceList = [];
     this.dataresumecontainerService.projectList = [];
     this.dataresumecontainerService.skillList = [];
 
-    this.dataresumecontainerService.resumeEdit = this.resumeForm
-      .value as IResume; //Vacío el resume edit para que no vuelva a popular esa data.
+    
   }
 
   resumeForm = this.fb.group({
     id: [0],
     userId: [this.userId],
+    title: [`SIN TÍTULO ${this.resumeId}`],
     firstName: ['', [Validators.pattern('^[a-zA-Z ]+$')]],
-    lastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
+    lastName: ['', [Validators.pattern('^[a-zA-Z ]+$')]],
     contactEmail: ['', [Validators.email]],
-    contactPhone: ['', [Validators.pattern('^[0-9]+$')]],
+    contactPhone: ['', [Validators.pattern('^[0-9 ]+$')]],
     experiences: this.fb.array([]),
     projects: this.fb.array([]),
     skills: this.fb.array([]),
@@ -103,6 +105,7 @@ export class ResumeComponent {
     this.resumeForm.patchValue({
       id: this.dataresumecontainerService.resumeEdit.id,
       userId: this.dataresumecontainerService.resumeEdit.userId,
+      title: this.dataresumecontainerService.resumeEdit.title,
       firstName: this.dataresumecontainerService.resumeEdit.firstName,
       lastName: this.dataresumecontainerService.resumeEdit.lastName,
       contactEmail: this.dataresumecontainerService.resumeEdit.contactEmail,
@@ -425,6 +428,7 @@ export class ResumeComponent {
       cancelButtonColor: '#d33',
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log(this.resumeForm.value);
         this.resumeService.alta(this.resumeForm.value).subscribe(() => {
           this.resumeForm.value.educations?.map((education) => {
             this.saveEducations(education as IEducation);

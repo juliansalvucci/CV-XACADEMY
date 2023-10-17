@@ -28,7 +28,7 @@ export class HomeComponent {
     public _MatPaginatorIntl: MatPaginatorIntl
   ) {}
 
-  displayedColumns: string[] = ['id', 'name', 'acciones'];
+  displayedColumns: string[] = ['name', 'acciones'];
 
   dataSource = new MatTableDataSource<IResume>([]);
 
@@ -53,7 +53,7 @@ export class HomeComponent {
       //sortingDataAccessor para objetos complejos o anidados
       switch (property) {
         case 'name':
-          return element.firstName + ' ' + element.lastName;
+          return element.title;
 
         default:
           return element[property];

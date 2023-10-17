@@ -17,17 +17,7 @@
   <div>
     <p class="h6 py-2 text-muted">Listado de curriculums.</p>
     <table mat-table class="shadow-sm" [dataSource]="this.dataSource" matSort>
-      <ng-container matColumnDef="id">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          class="text-secondary fw-normal"
-        >
-          N° de curriculum
-        </th>
-        <td mat-cell *matCellDef="let i = index" class="w-25">{{ i + 1 }}</td>
-      </ng-container>
+      
 
       <ng-container matColumnDef="name">
         <th
@@ -36,10 +26,10 @@
           mat-sort-header
           class="text-secondary fw-normal"
         >
-          Nombre del curriculum
+          Título del curriculum
         </th>
         <td mat-cell *matCellDef="let row">
-          {{ row.firstName + " " + row.lastName }}
+          {{ row.title }}
         </td>
       </ng-container>
       <ng-container matColumnDef="acciones">
