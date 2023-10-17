@@ -34,6 +34,7 @@ export class AuthService {
         const responseObject = JSON.parse(r) as ISession;
         this.cookieService.set('token', responseObject.token);
         this.cookieService.set('userId', responseObject.userId.toString());
+        this.cookieService.set('userName', login.user);
         this.cookieService.set(
           'lastResumeId',
           responseObject.lastResumeId.toString()
@@ -52,6 +53,7 @@ export class AuthService {
     this.loginStatus.next(false);
     this.cookieService.delete('token');
     this.cookieService.delete('userId');
+    this.cookieService.delete('userName');
     this.cookieService.delete('lastResumeId');
     this.router.navigateByUrl(INTERNAL_ROUTES.AUTH_LOGIN);
   }

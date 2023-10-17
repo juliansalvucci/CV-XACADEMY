@@ -1,5 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import {
+  MatPaginator,
+  MatPaginatorIntl,
+  PageEvent,
+} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user/user.service';
@@ -26,7 +30,7 @@ export class HomeComponent {
 
   displayedColumns: string[] = ['id', 'name', 'acciones'];
 
-  dataSource = new MatTableDataSource<any>([]);
+  dataSource = new MatTableDataSource<IResume>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -44,6 +48,18 @@ export class HomeComponent {
   configTable() {
     this.dataSource.sort = this.sort!;
     this.dataSource.paginator = this.paginator!;
+
+    this.dataSource.sortingDataAccessor = (element: any, property: any) => {
+      //sortingDataAccessor para objetos complejos o anidados
+      switch (property) {
+        case 'name':
+          return element.firstName + ' ' + element.lastName;
+
+        default:
+          return element[property];
+      }
+    };
+    this.dataSource.sort = this.sort!;
   }
 
   async loadAllResumes() {
@@ -80,7 +96,6 @@ export class HomeComponent {
               'success'
             );
             this.loadAllResumes();
-            console.log('data', this.dataSource.data);
           });
       }
     });
