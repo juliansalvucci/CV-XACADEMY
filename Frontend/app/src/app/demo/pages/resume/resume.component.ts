@@ -47,13 +47,16 @@ export class ResumeComponent {
     this.experienceForm.reset();
     this.projectForm.reset();
     this.skillForm.reset();
-    this.dataresumecontainerService.resumeEdit = this.resumeForm.value as IResume
+    this.dataresumecontainerService.resume.firstName = "";
+    this.dataresumecontainerService.resume.lastName = "";
+    this.dataresumecontainerService.resume.contactEmail = "";
+    this.dataresumecontainerService.resume.contactPhone = "";
+    this.dataresumecontainerService.resumeEdit = this.resumeForm
+      .value as IResume;
     this.dataresumecontainerService.educationList = [];
     this.dataresumecontainerService.experienceList = [];
     this.dataresumecontainerService.projectList = [];
     this.dataresumecontainerService.skillList = [];
-
-    
   }
 
   resumeForm = this.fb.group({
